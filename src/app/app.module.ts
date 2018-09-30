@@ -23,7 +23,8 @@ import { OrganizadosPorMiComponent } from './organizados-por-mi/organizados-por-
     AgendaComponent,
     OrganizadosPorMiComponent,
     PendientesComponent,
-    SidebarComponent
+    SidebarComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

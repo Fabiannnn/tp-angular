@@ -12,15 +12,14 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { OrganizadosPorMiComponent } from './organizados-por-mi/organizados-por-mi.component';
 
 export const routes: Routes = [
-    {path: '', component: NavbarComponent, 
-    children:[
-      {path: 'perfil', component: PerfilComponent},
-      {path: 'misEventos', component: MisEventosComponent,
-        children:[
-          {path: 'misEventos/agenda', component: AgendaComponent},
-          {path: 'misEventos/organizados-por-mi', component: OrganizadosPorMiComponent},
-          {path: 'misEventos/pendientes', component: PendientesComponent},
-        ]},
-      
-    ]}
-]
+  {path: '', redirectTo: 'misEventos/agenda', pathMatch:'full'},
+  {path: 'perfil', component: PerfilComponent},
+  {path: 'misEventos', component: MisEventosComponent,
+  children:[
+    {path: '', redirectTo: 'agenda', pathMatch:'full'},
+    {path: 'agenda', component: AgendaComponent},
+    {path: 'organizados-por-mi', component: OrganizadosPorMiComponent},
+    {path: 'pendientes', component: PendientesComponent},
+    {path: '', component: AgendaComponent}
+  ]}
+];
