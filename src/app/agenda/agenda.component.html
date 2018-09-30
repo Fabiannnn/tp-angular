@@ -4,11 +4,11 @@
   <h4>Hoy</h4>         
     <table class="table">
       <tbody>
-        <tr>
-          <td>10/10/2018 22:00</td>
-          <td>Cumple Kara</td>
-          <td>Mi Casa</td>
-          <td>Kara Danvers</td>
+        <tr *ngFor="let d of dia">
+          <td>{{ d.timestamp }}</td>
+          <td>{{ d.nombre }}</td>
+          <td>{{ d.lugar }}</td>
+          <td>{{ d.motivo }}</td>
         </tr>
       </tbody>
     </table>
@@ -18,17 +18,11 @@
     <h4>Esta semana</h4>      
     <table class="table">
       <tbody>
-        <tr>
-          <td>14/10/2018 22:00</td>
-          <td>Hosen Fest</td>
-          <td>Club Ciudad</td>
-          <td>Die Toten Hosen</td>
-        </tr>
-        <tr>
-          <td>16/10/2018 22:00</td>
-          <td>Aniversario P.E.</td>
-          <td>25 de Mayo 1485</td>
-          <td>Timothy Drake</td>
+        <tr *ngFor="let s of semana">
+          <td>{{ s.timestamp }}</td>
+          <td>{{ s.nombre }}</td>
+          <td>{{ s.lugar }}</td>
+          <td>{{ s.motivo }}</td>
         </tr>
       </tbody>
     </table>
@@ -38,17 +32,11 @@
     <h4>Próximos</h4>   
     <table class="table">
       <tbody>
-        <tr>
-          <td>20/12/2018 21:30</td>
-          <td>Partido</td>
-          <td>Parque Sarmiento</td>
-          <td>James Gordon</td>
-        </tr>
-        <tr>
-          <td>20/12/2018 21:30</td>
-          <td>Despedida Julia</td>
-          <td>Av. Cabildo 456</td>
-          <td>Kara Danvers</td>
+        <tr *ngFor="let p of proximos">
+          <td>{{ p.timestamp }}</td>
+          <td>{{ p.nombre }}</td>
+          <td>{{ p.lugar }}</td>
+          <td>{{ p.motivo }}</td>
         </tr>
       </tbody>
     </table>
