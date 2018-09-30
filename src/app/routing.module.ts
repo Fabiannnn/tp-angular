@@ -17,9 +17,9 @@ export const routes: Routes = [
       {path: 'perfil', component: PerfilComponent},
       {path: 'misEventos', component: MisEventosComponent,
         children:[
-          {path: 'agenda', component: AgendaComponent},
-          {path: 'organizados-por-mi', component: OrganizadosPorMiComponent},
-          {path: 'pendientes', component: PendientesComponent},
+          {path: 'misEventos/agenda', component: AgendaComponent},
+          {path: 'misEventos/organizados-por-mi', component: OrganizadosPorMiComponent},
+          {path: 'misEventos/pendientes', component: PendientesComponent},
         ]},
       
     ]}
