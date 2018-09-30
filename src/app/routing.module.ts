@@ -1,7 +1,5 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { Routes } from '@angular/router';
 import { RouterModule } from '@angular/router';
-import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { AgendaComponent } from './agenda/agenda.component';
@@ -11,25 +9,18 @@ import { NuevoCerradoComponent } from './nuevo-cerrado/nuevo-cerrado.component';
 import { PendientesComponent } from './pendientes/pendientes.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { routes } from './routing.module';
 import { OrganizadosPorMiComponent } from './organizados-por-mi/organizados-por-mi.component';
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    NavbarComponent,
-    MisEventosComponent,
-    PerfilComponent,
-    AgendaComponent,
-    OrganizadosPorMiComponent,
-    PendientesComponent,
-    SidebarComponent
-  ],
-  imports: [
-    BrowserModule,
-    RouterModule.forRoot(routes)
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
-})
-export class AppModule { }
+export const routes: Routes = [
+    {path: '', component: NavbarComponent, 
+    children:[
+      {path: 'perfil', component: PerfilComponent},
+      {path: 'misEventos', component: MisEventosComponent,
+        children:[
+          {path: 'agenda', component: AgendaComponent},
+          {path: 'organizados-por-mi', component: OrganizadosPorMiComponent},
+          {path: 'pendientes', component: PendientesComponent},
+        ]},
+      
+    ]}
+]
