@@ -1,47 +1,54 @@
-<div class="col-sm-10">
+<h4>Hoy</h4>
+<br />
+<div class="container" *ngFor="let d of dia">
 
-  <div class="container"> 
-  <h4>Hoy</h4>         
-    <table class="table">
-      <tbody>
-        <tr *ngFor="let d of dia">
-          <td>{{ d.timestamp }}</td>
-          <td>{{ d.nombre }}</td>
-          <td>{{ d.lugar }}</td>
-          <td>{{ d.motivo }}</td>
-        </tr>
-      </tbody>
-    </table>
+  <div class="row">
+    <div class="col-sm-3">
+      {{ d.fecha | date:'dd/MM/yyy HH:mm'}}
+    </div>
+    <div class="col-sm-3">
+      {{d.nombre}}
+    </div>
+    <div class="col-sm-3">
+      {{ d.lugar }}
+    </div>
+    <div class="col-sm-3">
+      {{ d.motivo }}
+    </div>
   </div>
-  
-  <div class="container">
-    <h4>Esta semana</h4>      
-    <table class="table">
-      <tbody>
-        <tr *ngFor="let s of semana">
-          <td>{{ s.timestamp }}</td>
-          <td>{{ s.nombre }}</td>
-          <td>{{ s.lugar }}</td>
-          <td>{{ s.motivo }}</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  
-  <div class="container">
-    <h4>Próximos</h4>   
-    <table class="table">
-      <tbody>
-        <tr *ngFor="let p of proximos">
-          <td>{{ p.timestamp }}</td>
-          <td>{{ p.nombre }}</td>
-          <td>{{ p.lugar }}</td>
-          <td>{{ p.motivo }}</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  
+
 </div>
-
-  
+<br />
+<h4>Esta semana</h4>
+<div class="container" *ngFor="let s of semana">
+  <br />
+  <div class="row">
+    <div class="col-sm-3">
+      {{ s.timestamp}}
+    </div>
+    <div class="col-sm-3">
+      {{s.nombre}}
+    </div>
+    <div class="col-sm-3"> {{ s.lugar }} </div>
+    <div class="col-sm-3">
+      {{ s.motivo }}
+    </div>
+  </div>
+</div>
+  <br />
+  <h4>Próximos Eventos</h4>
+  <div class="container" *ngFor="let p of proximos">
+    <br />
+    <div class="row">
+      <div class="col-sm-3">
+        {{ p.timestamp}}
+      </div>
+      <div class="col-sm-3">
+        {{p.nombre}}
+      </div>
+      <div class="col-sm-3"> {{ p.lugar }} </div>
+      <div class="col-sm-3">
+        {{ p.motivo }}
+      </div>
+    </div>
+  </div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { toDate } from '@angular/common/src/i18n/format_date';
 
 @Component({
   selector: 'agenda',
@@ -10,7 +11,10 @@ export class AgendaComponent implements OnInit {
 
   dia = [
 
-    {timestamp: "10/10/2018 22:00",
+    {fecha: new Date(),
+      hora: new Date().getHours().toString(),
+      minutos: new Date().getMinutes().toString(),
+
     nombre: "Cumple Kara",
     lugar: "Mi Casa",
     motivo:"Kara Danvers"}
@@ -51,6 +55,5 @@ proximos = [
   ngOnInit() { 
   }
 }
-
 
 
