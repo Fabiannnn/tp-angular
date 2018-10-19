@@ -10,7 +10,7 @@ export class ServiceAgendaService {
       fecha: new Date(),
       hora: new Date().getHours().toString(),
       minutos: new Date().getMinutes().toString(),
-      nombre: "No   Cump    le Kara",
+      nombre: "No   Cumple  de Kara",
       lugar: "Mi Casa",
       motivo: "Kara Danvers"
     }
