@@ -16,7 +16,7 @@ export class PerfilComponent implements OnInit {
   constructor(private serviceUsuario: ServiceUsuarioService) {
     this.usuarioPerfil = this.serviceUsuario.usuarioActivo
     this.amigos = this.usuarioPerfil.amigos
-     this.cantidadAmigos= 6
+         this.cantidadAmigos= this.amigos.length
      console.log(this.amigos)
  //  console.log(this.amigos.size) length tampoco
  //      this.cantAmigos = this.amigos.length
