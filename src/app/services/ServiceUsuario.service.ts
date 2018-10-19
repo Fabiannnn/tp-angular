@@ -1,27 +1,31 @@
 import { Injectable } from '@angular/core';
 import { Usuario } from '../angularDomain/Usuario';
+import { checkAndUpdateNode } from '@angular/core/src/view/view';
 @Injectable({
   providedIn: 'root'
 })
 
 export class ServiceUsuarioService {
-  usuario1: Usuario
+  usuarioIngresante: Usuario
   amigos: Array<Usuario>
-  get usuarioActivo(): Usuario {//Usuario
-    return this.usuario1 = new Usuario(1, 'pruebe')
-    //   return [{
-    //      id: 1,
-    //    nombreUsuario: "usuario1900"
-    //}]
-    //const usuarioPerfi1=new Usuario(1,'usuario1')
 
-    //     return (usuario1)
 
+  get usuarioActivo(): Usuario {
+    this.usuarioIngresante = new Usuario(1, "@Victoria!!!! ", "Usuario Victorioso", "seHace@camino.el.andar",[new Usuario(2,  "@elusuarioAmigo ",'Primer amigo', "mis_amigos@son.unos.laralara", []), new Usuario(3,  "@elOtroAmigo ",'Otro amigo', "mis_Otros_amigos@son.unos.laralara", [])] )
+
+    return this.usuarioIngresante
+   
   }
   get amigosUsuario(): Array<Usuario> {
-    const amigos = [new Usuario(2, 'John Doe'), new Usuario(2, 'John Doe')]
-    return amigos
+    const amigos = [new Usuario(2,  "@elusuarioAmigo ",'Primer amigo', "mis_amigos@son.unos.laralara", []), new Usuario(3,  "@elOtroAmigo ",'Otro amigo', "mis_Otros_amigos@son.unos.laralara", [])]
+   console.log(this.amigos)
+    return this.amigos
+
   }
+/*  get cantidadAmigos():number{
+ this.cantAmigos=this.amigos.length
+ return this.cantAmigos
+  }*/
   constructor() { }
 
 }
