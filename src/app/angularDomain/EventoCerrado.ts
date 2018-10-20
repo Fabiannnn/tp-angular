@@ -1,11 +1,12 @@
 import { Usuario } from "./Usuario";
 import { Evento } from "./Evento";
 import { Invitacion } from "./Invitacion";
+import { Locacion } from "./Locacion";
 
 export class EventoCerrado extends Evento {
 
     //static val COEF_EXITO = 0.9
-    invitados: Array<Invitacion> = [];
+    invitados: Array<Invitacion> = new Array<Invitacion>();
     //Set<Invitacion> invitados = newHashSet
     unaCapacidadMaxima: number;
     //int capacidadMaxima = 0
@@ -75,11 +76,6 @@ export class EventoCerrado extends Evento {
         else { return false }
     }
 
-    invitacionesAceptadas(): number {
-        return 0
-        //return this.invitados.filter[invitacion | invitacion.aceptada === true].size()
-    }
-
     esUnFracaso(): Boolean {
         return true
         //return !this.cancelado && LocalDateTime.now().isAfter(this.fechaFinalizacion) && asistenciaFracaso()
@@ -97,5 +93,25 @@ export class EventoCerrado extends Evento {
 
     usuariosCercanosAlEvento(usuario: Usuario): Boolean {
         throw "No se puede notificar al usuario."
+    }
+
+    invitacionesAceptadas(): number {
+        let invitacionesAceptadas: number = 0
+        this.invitados.forEach(element => {
+            if (element.invitacionesAceptadas()) {
+                invitacionesAceptadas = invitacionesAceptadas + 1
+            }
+        });
+        return invitacionesAceptadas
+    }
+
+    //Prueba
+    agregarInvitacion(unaInvitacion: Invitacion): void {
+        this.invitados.push(unaInvitacion)
+    }
+    
+    constructor(unNombre: string, unOrganizador: Usuario, unaLocacion: Locacion, fechaInicio: Date, fechaFinal: Date, fechaLimite: Date, capacidad: number) {
+        super(unNombre, unOrganizador, unaLocacion, fechaInicio, fechaFinal, fechaLimite)
+        this.unaCapacidadMaxima = capacidad;
     }
 }

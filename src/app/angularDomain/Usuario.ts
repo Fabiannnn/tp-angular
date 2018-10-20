@@ -26,16 +26,17 @@ export class Usuario {
         _nombreApellido: String,
         _email: String,
         _amigos: Array<Usuario>,
-        //   _tipoDeUsuario: TipoDeUsuario
+        _tipoDeUsuario: TipoDeUsuario
     ) {
         this.id = _id
         this.nombreUsuario = _nombreUsuario
         this.nombreApellido = _nombreApellido
         this.email = _email
         this.amigos = _amigos
-        //   this.tipoDeUsuario = _tipoDeUsuario
-
+        this.tipoDeUsuario = _tipoDeUsuario
     }
+    //Constructor para repositorio de prueba.
+    
     /*    nombreApellido?: String,
       email?: String,
        fechaNacimiento?: Date,

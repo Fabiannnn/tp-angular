@@ -13,24 +13,30 @@ import { PerfilComponent } from './perfil/perfil.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { routes } from './routing.module';
 import { OrganizadosPorMiComponent } from './organizados-por-mi/organizados-por-mi.component';
+import { TablaCerradosComponent } from './tabla-cerrados/tabla-cerrados.component';
+import { TablaAbiertosComponent } from './tabla-abiertos/tabla-abiertos.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    NavbarComponent,
-    MisEventosComponent,
-    PerfilComponent,
-    AgendaComponent,
-    OrganizadosPorMiComponent,
-    PendientesComponent,
-    SidebarComponent,
-    NotFoundComponent
-  ],
-  imports: [
-    BrowserModule,
-    RouterModule.forRoot(routes)
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+   declarations: [
+      AppComponent,
+      NavbarComponent,
+      MisEventosComponent,
+      PerfilComponent,
+      AgendaComponent,
+      OrganizadosPorMiComponent,
+      PendientesComponent,
+      SidebarComponent,
+      NotFoundComponent,
+      TablaCerradosComponent,
+      TablaAbiertosComponent
+   ],
+   imports: [
+      BrowserModule,
+      RouterModule.forRoot(routes)
+   ],
+   providers: [],
+   bootstrap: [
+      AppComponent
+   ]
 })
 export class AppModule { }

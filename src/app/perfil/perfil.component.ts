@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Usuario } from '../angularDomain/Usuario';
 import { ServiceUsuarioService } from '../services/ServiceUsuario.service';
+import { TipoDeUsuario } from '../angularDomain/TipoDeUsuario';
 
 @Component({
   selector: 'perfil',
@@ -11,7 +12,6 @@ export class PerfilComponent implements OnInit {
   usuarioPerfil
   amigos
   cantidadAmigos
-
 
   constructor(private serviceUsuario: ServiceUsuarioService) {
     this.usuarioPerfil = this.serviceUsuario.usuarioActivo

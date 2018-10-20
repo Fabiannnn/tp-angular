@@ -1,9 +1,9 @@
 
-import { TipoDeUsuario} from './TipoDeUsuario';
+import { TipoDeUsuario} from '../angularDomain/TipoDeUsuario';
 import { Usuario} from './Usuario';
 
 export class UsuarioProfesional implements TipoDeUsuario {
-    tipoDeUsuarioNom(): String {
+    categoria(): String {
         return "Profesional"
     }
     puedeOrganizarEventoAbierto(unOrganizador: Usuario): Boolean { return true }

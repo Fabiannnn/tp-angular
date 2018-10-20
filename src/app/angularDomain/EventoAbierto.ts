@@ -1,6 +1,7 @@
 import { Usuario } from "./Usuario";
 import { Evento } from "./Evento";
 import { Entrada } from "./Entrada";
+import { Locacion } from "./Locacion";
 
 export class EventoAbierto extends Evento {
 

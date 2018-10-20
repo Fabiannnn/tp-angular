@@ -74,4 +74,13 @@ export abstract class Evento {
     toString(): String {
         return this.nombre
     }
+
+    constructor(unNombre: string, unOrganizador: Usuario, unaLocacion: Locacion, fechaInicio: Date, fechaFinal: Date, fechaLimite: Date) {
+        this.nombre = unNombre
+        this.organizador = unOrganizador
+        this.locacion = unaLocacion
+        this.fechaDeInicio = fechaInicio
+        this.fechaFinalizacion = fechaFinal
+        this.fechaLimiteConfirmacion = fechaLimite
+    }
 }

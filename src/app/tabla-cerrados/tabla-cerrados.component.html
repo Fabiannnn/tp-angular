@@ -1,0 +1,25 @@
+<div class="container"> 
+  <h5>Eventos Cerrados</h5>         
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Fecha</th>
+          <th>Evento</th>
+          <th>Lugar</th>
+          <th>Invitados</th>
+          <th>Confirmados</th>
+          <th>Rechazados</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let e of eventosCreadosPorMi">
+          <td>{{e.fechaDeInicio | date: 'dd/MM/yyy HH:mm'}}</td>
+          <td>{{e.nombre}}</td>
+          <td>{{e.locacion.nombre}}</td>
+          <td>{{e.locacion.nombre}}</td>
+          <td>{{e.invitacionesAceptadas()}}</td>
+          <td>{{e.locacion.nombre}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
