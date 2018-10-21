@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ServiceEventoService } from '../services/ServiceEvento.service';
+import { EventoAbierto } from '../angularDomain/EventoAbierto';
 
 @Component({
   selector: 'tabla-abiertos',
@@ -6,10 +8,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tabla-abiertos.component.css']
 })
 export class TablaAbiertosComponent implements OnInit {
+  eventosAbiertosCreadosPorMi: Array<EventoAbierto> = new Array<EventoAbierto>();
 
-  constructor() { }
+  title = 'EVENTOS DEL NEGRO'
+  serviceEvento: ServiceEventoService
 
-  ngOnInit() {
+  constructor(serviceEvento: ServiceEventoService) {
+    this.eventosAbiertosCreadosPorMi = ServiceEventoService.EVENTOS_ABIERTOS
   }
 
+  ngOnInit(): void {
+    this.eventosAbiertosCreadosPorMi = ServiceEventoService.EVENTOS_ABIERTOS
+  }
 }

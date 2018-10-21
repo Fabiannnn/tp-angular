@@ -35,20 +35,20 @@
     </div>
   </div>
 </div>
+<br />
+<h4>Próximos Eventos</h4>
+<div class="container" *ngFor="let p of proximos">
   <br />
-  <h4>Próximos Eventos</h4>
-  <div class="container" *ngFor="let p of proximos">
-    <br />
-    <div class="row">
-      <div class="col-sm-3">
-        {{ p.timestamp}}
-      </div>
-      <div class="col-sm-3">
-        {{p.nombre}}
-      </div>
-      <div class="col-sm-3"> {{ p.lugar }} </div>
-      <div class="col-sm-3">
-        {{ p.motivo }}
-      </div>
+  <div class="row">
+    <div class="col-sm-3">
+      {{ p.timestamp}}
+    </div>
+    <div class="col-sm-3">
+      {{p.nombre}}
+    </div>
+    <div class="col-sm-3"> {{ p.lugar }} </div>
+    <div class="col-sm-3">
+      {{ p.motivo }}
     </div>
   </div>
+</div>

@@ -1,4 +1,4 @@
-import {Usuario} from './Usuario';
+import { Usuario } from './Usuario';
 
 export interface TipoDeUsuario {
     puedeOrganizarEventoAbierto(unOrganizador: Usuario): Boolean

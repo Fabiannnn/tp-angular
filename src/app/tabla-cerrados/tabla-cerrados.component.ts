@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ServiceEventoService } from '../services/ServiceEvento.service';
 import { Evento } from '../angularDomain/Evento';
+import { EventoCerrado } from '../angularDomain/EventoCerrado';
 
 
 @Component({
@@ -9,15 +10,17 @@ import { Evento } from '../angularDomain/Evento';
   styleUrls: ['./tabla-cerrados.component.css']
 })
 export class TablaCerradosComponent implements OnInit {
-    eventosCreadosPorMi: Array<Evento>;
-    
-    constructor(private serviceEvento: ServiceEventoService) {
-      serviceEvento.obtenerEventosAbiertos()
-      this.eventosCreadosPorMi = ServiceEventoService.EVENTOS;
-    }
-  
-    ngOnInit() {
-    }
-  
+  eventosCreadosPorMi: Array<EventoCerrado> = new Array<EventoCerrado>();
+
+  title = 'EVENTOS DEL NEGRO'
+  serviceEvento: ServiceEventoService
+
+  constructor(serviceEvento: ServiceEventoService) {
+    this.eventosCreadosPorMi = ServiceEventoService.EVENTOS
   }
-  
+
+  ngOnInit(): void {
+    this.eventosCreadosPorMi = ServiceEventoService.EVENTOS
+  }
+}
+

@@ -2,13 +2,13 @@ import { EventoCerrado } from "./EventoCerrado";
 import { Usuario } from "./Usuario";
 
 export class Invitacion {
-    unEventoCerrado: EventoCerrado
-	unUsuario: Usuario 
-	cantidadDeAcompanantes: number 
+	unEventoCerrado: EventoCerrado
+	unUsuario: Usuario
+	cantidadDeAcompanantes: number
 	aceptada: Boolean
 	cantidadDeAcompanantesConfirmados: number = 0
 
-	estaAceptada(): void{
+	estaAceptada(): void {
 		this.aceptada = true
 	}
 
@@ -26,7 +26,7 @@ export class Invitacion {
 		this.aceptada = false
 	}
 
-	invitacionesAceptadas(): Boolean {
+	estadoInvitacion(): Boolean {
 		return this.aceptada
 	}
 

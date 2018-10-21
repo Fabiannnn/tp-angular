@@ -75,6 +75,11 @@ export abstract class Evento {
         return this.nombre
     }
 
+    //Cosas agregadas o usadas para typescript.
+    nombreLocacion(): String {
+        return this.locacion.nombre
+    }
+
     constructor(unNombre: string, unOrganizador: Usuario, unaLocacion: Locacion, fechaInicio: Date, fechaFinal: Date, fechaLimite: Date) {
         this.nombre = unNombre
         this.organizador = unOrganizador

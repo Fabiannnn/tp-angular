@@ -1,3 +1,25 @@
-<p>
-  tabla-abiertos works!
-</p>
+<div class="container">
+  <h5>Eventos Abiertos</h5>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Fecha</th>
+        <th>Evento</th>
+        <th>Lugar</th>
+        <th>Entradas Vendidas</th>
+        <th>Edad Mínima</th>
+        <th>Precio</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let e of eventosAbiertosCreadosPorMi">
+        <td>{{e.fechaDeInicio | date: 'dd/MM/yyy HH:mm'}}</td>
+        <td>{{e.nombre}}</td>
+        <td>{{e.nombreLocacion()}}</td>
+        <td>{{e.entradasVendidas()}}</td>
+        <td>{{e.laEdadMinima()}}</td>
+        <td>{{e.precioDeEntrada()}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

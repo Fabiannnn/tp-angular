@@ -5,11 +5,9 @@ import { Locacion } from "./Locacion";
 
 export class EventoAbierto extends Evento {
 
-    edadMinima: Number;
-    precioEntrada: Number;
-    //double precioEntrada
-    entradas: Array<Entrada> = [];
-    //Set<Entrada> entradas = newHashSet
+    edadMinima: number;
+    precioEntrada: number;
+    entradas: Array<Entrada> = new Array<Entrada>();
 
     comprarEntrada(elComprador: Usuario): void {
         this.puedeComprarEntrada(elComprador)
@@ -36,10 +34,6 @@ export class EventoAbierto extends Evento {
         var nuevaEntrada = new Entrada(this, elComprador)
         this.registrarCompraEnEvento(nuevaEntrada)
         this.registrarCompraEnUsuario(nuevaEntrada, elComprador)
-    }
-
-    registrarCompraEnEvento(nuevaEntrada: Entrada): void {
-        this.entradas.push(nuevaEntrada)
     }
 
     registrarCompraEnUsuario(nuevaEntrada: Entrada, elComprador: Usuario): void {
@@ -90,5 +84,28 @@ export class EventoAbierto extends Evento {
 
     usuariosCercanosAlEvento(usuario: Usuario): Boolean {
         return this.locacion.estaDentroDelRadioDeCercania(usuario)
+    }
+
+    //Cosas que usamos y agregamos para typescript.
+    registrarCompraEnEvento(nuevaEntrada: Entrada): void {
+        this.entradas.push(nuevaEntrada)
+    }
+
+    laEdadMinima(): number {
+        return this.edadMinima
+    }
+
+    precioDeEntrada(): number {
+        return this.precioEntrada
+    }
+
+    entradasVendidas(): number {
+        return this.entradas.length
+    }
+
+    constructor(unNombre: string, unOrganizador: Usuario, unaLocacion: Locacion, fechaInicio: Date, fechaFinal: Date, fechaLimite: Date, unaEdadMinima: number, unPrecio: number) {
+        super(unNombre, unOrganizador, unaLocacion, fechaInicio, fechaFinal, fechaLimite)
+        this.edadMinima = unaEdadMinima;
+        this.precioEntrada = unPrecio;
     }
 }

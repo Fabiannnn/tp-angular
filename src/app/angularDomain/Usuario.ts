@@ -36,7 +36,7 @@ export class Usuario {
         this.tipoDeUsuario = _tipoDeUsuario
     }
     //Constructor para repositorio de prueba.
-    
+
     /*    nombreApellido?: String,
       email?: String,
        fechaNacimiento?: Date,
