@@ -1,8 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Usuario } from '../angularDomain/Usuario';
-import { checkAndUpdateNode } from '@angular/core/src/view/view';
-import { TipoDeUsuario } from '../angularDomain/TipoDeUsuario';
-import { UsuarioProfesional } from '../angularDomain/UsuarioProfesional';
 import { UsuarioFree } from '../angularDomain/UsuarioFree';
 import { UsuarioAmateur } from '../angularDomain/UsuarioAmateur';
 
