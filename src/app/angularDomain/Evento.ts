@@ -80,6 +80,10 @@ export abstract class Evento {
         return this.locacion.nombre
     }
 
+    nombreOrganizador(): String {
+        return this.organizador.miNombre()
+    }
+
     constructor(unNombre: string, unOrganizador: Usuario, unaLocacion: Locacion, fechaInicio: Date, fechaFinal: Date, fechaLimite: Date) {
         this.nombre = unNombre
         this.organizador = unOrganizador

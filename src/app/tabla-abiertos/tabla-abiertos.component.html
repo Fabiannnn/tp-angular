@@ -12,7 +12,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let e of eventosAbiertosCreadosPorMi">
+      <tr *ngFor="let e of misEventosAbiertos">
         <td>{{e.fechaDeInicio | date: 'dd/MM/yyy HH:mm'}}</td>
         <td>{{e.nombre}}</td>
         <td>{{e.nombreLocacion()}}</td>

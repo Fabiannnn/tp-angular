@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Usuario } from '../angularDomain/Usuario';
 import { ServiceUsuarioService } from '../services/ServiceUsuario.service';
-import { TipoDeUsuario } from '../angularDomain/TipoDeUsuario';
 
 @Component({
   selector: 'perfil',

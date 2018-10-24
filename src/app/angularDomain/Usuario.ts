@@ -68,4 +68,8 @@ export class Usuario {
         return 20 //Period.between(fechaNacimiento, LocalDate.now()).getYears
     }
 
+    miNombre(): String {
+        return this.nombreApellido
+    }
+
 }

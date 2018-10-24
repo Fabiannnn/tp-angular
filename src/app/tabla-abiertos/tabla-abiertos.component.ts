@@ -8,16 +8,14 @@ import { EventoAbierto } from '../angularDomain/EventoAbierto';
   styleUrls: ['./tabla-abiertos.component.css']
 })
 export class TablaAbiertosComponent implements OnInit {
-  eventosAbiertosCreadosPorMi: Array<EventoAbierto> = new Array<EventoAbierto>();
+  title = 'MIS EVENTOS ABIERTOS'
+  misEventosAbiertos: Array<EventoAbierto> = new Array<EventoAbierto>()
 
-  title = 'EVENTOS DEL NEGRO'
-  serviceEvento: ServiceEventoService
+  constructor(private serviceEvento: ServiceEventoService) {
 
-  constructor(serviceEvento: ServiceEventoService) {
-    this.eventosAbiertosCreadosPorMi = ServiceEventoService.EVENTOS_ABIERTOS
   }
 
   ngOnInit(): void {
-    this.eventosAbiertosCreadosPorMi = ServiceEventoService.EVENTOS_ABIERTOS
+    this.misEventosAbiertos = this.serviceEvento.EVENTOS_ABIERTO
   }
 }
