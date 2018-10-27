@@ -2,58 +2,58 @@
   <div class="row">
     <div class="col-sm-2">
       <ul class="navbar-nav ml-auto">
-
         <li class="nav-item active">
           <a class="nav-link" href="#"><img src="./assets/elnegro.png" alt="Elne"> </a>
         </li>
-
+        <!--
         <li class="nav-item active">
-          <a class="nav-link" href="#">Id Usuario {{usuarioPerfil.id}} </a>
+          Id Usuario: {{usuarioPerfil.id}}
+        </li>-->
+        <br>
+        <li class="nav-item">
+          <b>Usuario: </b> {{usuarioPerfil.nombreUsuario}}
         </li>
-
+        <br>
         <li class="nav-item active">
-          <a class="nav-link" href="#">{{usuarioPerfil.nombreApellido}}</a>
+          <b>Nombre y Apellido:</b> <br> {{usuarioPerfil.nombreApellido}}
         </li>
-
+        <br>
         <li class="nav-item active">
-          <a class="nav-link" href="#"> {{usuarioPerfil.nombreUsuario}}</a>
+          <b>E-mail: </b> <br> {{usuarioPerfil.email}}
         </li>
-
+        <br>
         <li class="nav-item active">
-          <a class="nav-link" href="#">{{usuarioPerfil.eMail}}</a>
+          <b>Seguidores: </b> {{usuarioPerfil.amigos.length}}
         </li>
+        <br>
         <li class="nav-item active">
-          <a class="nav-link" href="#"> amigos {{cantidadAmigos}}</a>
+          <b>Tipo de Usuario: </b> <br> {{usuarioPerfil.tipoDeUsuario.nom}}
         </li>
-
       </ul>
     </div>
-
-
     <div class="col-sm-10">
-
       <div class="container">
         <h4>Amigos</h4>
         <br />
-        <div class="container" *ngFor="let a of amigos">
+        <div class="container" *ngFor="let a of usuarioPerfil.amigos">
           <br />
           <div class="row">
             <div class="col-sm-3">
               {{a.nombreApellido}}
             </div>
-            <div class="col-sm-5">
+            <div class="col-sm-3">
               {{a.email}}
             </div>
-
-            <div class="col-sm-4">
-              acciones
+            <div class="col-sm-3">
+              <button id="eliminarAmigo" type="button" title="Eliminar Amigo" class="btn btn-ligth" placement="right"
+                (click)="eliminarAmigo(a.id)">
+                <i class="fa fa-remove" style="font-size:1.05em;color:red"></i>
+              </button>
             </div>
             <br />
           </div>
-
         </div>
       </div>
-
     </div>
   </div>
 </div>

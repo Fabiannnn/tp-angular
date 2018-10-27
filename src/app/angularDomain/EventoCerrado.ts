@@ -34,7 +34,7 @@ export class EventoCerrado extends Evento {
     }
 
     registrarInvitacionEnUsuario(nuevaInvitacion: Invitacion, elInvitado: Usuario): void {
-        elInvitado.recibirInvitacion(nuevaInvitacion)
+     /*   elInvitado.recibirInvitacion(nuevaInvitacion)*/
     }
 
     cantidadAsistentes(): number {

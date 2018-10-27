@@ -10,6 +10,7 @@ import { PendientesComponent } from './pendientes/pendientes.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { OrganizadosPorMiComponent } from './organizados-por-mi/organizados-por-mi.component';
+import { NgModule } from '@angular/core'
 
 export const routes: Routes = [
   {path: '', redirectTo: 'misEventos/agenda', pathMatch:'full'},
@@ -22,4 +23,12 @@ export const routes: Routes = [
     {path: 'pendientes', component: PendientesComponent},
     {path: '', component: AgendaComponent}
   ]}
-];
+]
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }
+
+//export const routingComponents = [ TareasComponent, AsignarComponent ]

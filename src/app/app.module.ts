@@ -1,3 +1,4 @@
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
@@ -13,6 +14,7 @@ import { PerfilComponent } from './perfil/perfil.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { routes } from './routing.module';
 import { OrganizadosPorMiComponent } from './organizados-por-mi/organizados-por-mi.component';
+import { HttpModule } from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import { OrganizadosPorMiComponent } from './organizados-por-mi/organizados-por-
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    HttpModule
   ],
   providers: [],
   bootstrap: [AppComponent]

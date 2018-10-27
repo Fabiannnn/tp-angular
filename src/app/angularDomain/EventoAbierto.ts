@@ -9,15 +9,15 @@ export class EventoAbierto extends Evento {
     //double precioEntrada
     entradas: Array<Entrada> = [];
     //Set<Entrada> entradas = newHashSet
-
+/*
     comprarEntrada(elComprador: Usuario): void {
         this.puedeComprarEntrada(elComprador)
         this.generarEntrada(elComprador)
-    }
-
+    }*/
+/*
     ejecutarOrdenesDeInvitacion(): void {
         throw "Un EventoAbierto no puede ejecutar ordenes de Invitacion"
-    }
+    }*/
 
     puedeComprarEntrada(elComprador: Usuario): void {
         if (!this.edadValida(elComprador) || !this.fechaAnteriorALaLimite() || !this.hayEntradasDisponibles()) {
@@ -30,20 +30,20 @@ export class EventoAbierto extends Evento {
     }
 
     //Me parece que es void.
-    generarEntrada(elComprador: Usuario): void {
+ /*   generarEntrada(elComprador: Usuario): void {
         //let nuevaEntrada
         var nuevaEntrada = new Entrada(this, elComprador)
         this.registrarCompraEnEvento(nuevaEntrada)
         this.registrarCompraEnUsuario(nuevaEntrada, elComprador)
     }
-
+*/
     registrarCompraEnEvento(nuevaEntrada: Entrada): void {
         this.entradas.push(nuevaEntrada)
     }
-
+/*
     registrarCompraEnUsuario(nuevaEntrada: Entrada, elComprador: Usuario): void {
         elComprador.entradaComprada.push(nuevaEntrada)
-    }
+    }*/
 
     cancelarEvento(): void {
         this.cancelado = true
@@ -88,6 +88,6 @@ export class EventoAbierto extends Evento {
     }
 
     usuariosCercanosAlEvento(usuario: Usuario): Boolean {
-        return this.locacion.estaDentroDelRadioDeCercania(usuario)
+        return true/* this.locacion.estaDentroDelRadioDeCercania(usuario)*/
     }
 }
