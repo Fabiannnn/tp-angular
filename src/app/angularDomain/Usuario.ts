@@ -5,8 +5,8 @@ import { Point } from './Point';
 //import { serviceUsuarioService } from '../services/serviceUsuario.service';
 
 export class Usuario {
-    id: String
-    nombreUsuario: String
+    id: number
+        nombreUsuario: String
     nombreApellido: String;
     email: String;
     amigos: Array<Usuario> = new Array<Usuario>();
@@ -23,11 +23,12 @@ export class Usuario {
      eventosOrganizados: Array<String>; //Creo que deberia ser de eventos*/
 
     constructor(
+
         _nombreUsuario: String,
         _nombreApellido: String,
         _email: String,
         _amigos: Array<Usuario>,
-            _id: String,
+            _id: number,
           _tipoDeUsuario?: TipoDeUsuario,
     ) {
 
@@ -38,6 +39,8 @@ export class Usuario {
         this.id = _id
          this.tipoDeUsuario = _tipoDeUsuario
     }
+    //Constructor para repositorio de prueba.
+
     /*    nombreApellido?: String,
       email?: String,
        fechaNacimiento?: Date,

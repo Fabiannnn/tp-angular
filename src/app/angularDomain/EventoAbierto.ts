@@ -1,6 +1,7 @@
 import { Usuario } from "./Usuario";
 import { Evento } from "./Evento";
 import { Entrada } from "./Entrada";
+import { Locacion } from "./Locacion";
 
 export class EventoAbierto extends Evento {
 
@@ -36,11 +37,6 @@ export class EventoAbierto extends Evento {
         this.registrarCompraEnEvento(nuevaEntrada)
         this.registrarCompraEnUsuario(nuevaEntrada, elComprador)
     }
-*/
-    registrarCompraEnEvento(nuevaEntrada: Entrada): void {
-        this.entradas.push(nuevaEntrada)
-    }
-/*
     registrarCompraEnUsuario(nuevaEntrada: Entrada, elComprador: Usuario): void {
         elComprador.entradaComprada.push(nuevaEntrada)
     }*/
@@ -89,5 +85,28 @@ export class EventoAbierto extends Evento {
 
     usuariosCercanosAlEvento(usuario: Usuario): Boolean {
         return true/* this.locacion.estaDentroDelRadioDeCercania(usuario)*/
+    }
+
+    //Cosas que usamos y agregamos para typescript.
+    registrarCompraEnEvento(nuevaEntrada: Entrada): void {
+        this.entradas.push(nuevaEntrada)
+    }
+/*
+    laEdadMinima(): number {
+        return this.edadMinima
+    }
+
+    precioDeEntrada(): number {
+        return this.precioEntrada
+    }
+*/
+    entradasVendidas(): number {
+        return this.entradas.length
+    }
+
+    constructor(unNombre: string, unOrganizador: Usuario, unaLocacion: Locacion, fechaInicio: Date, fechaFinal: Date, fechaLimite: Date, unaEdadMinima: number, unPrecio: number) {
+        super(unNombre, unOrganizador, unaLocacion, fechaInicio, fechaFinal, fechaLimite)
+        this.edadMinima = unaEdadMinima;
+        this.precioEntrada = unPrecio;
     }
 }

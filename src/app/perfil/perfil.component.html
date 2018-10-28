@@ -22,11 +22,11 @@
           <b>E-mail: </b> <br> {{usuarioPerfil.email}}
         </li>
         <br>
-        <li class="nav-item active">
+        <li *ngIf="usuarioPerfil.amigos" class="nav-item active">
           <b>Seguidores: </b> {{usuarioPerfil.amigos.length}}
         </li>
         <br>
-        <li class="nav-item active">
+        <li class="nav-item active" *ngIf="usuarioPerfil.tipoDeUsuario">
           <b>Tipo de Usuario: </b> <br> {{usuarioPerfil.tipoDeUsuario.nom}}
         </li>
       </ul>

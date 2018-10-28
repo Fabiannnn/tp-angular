@@ -1,14 +1,12 @@
 import { Usuario } from "./Usuario";
 import { Evento } from "./Evento";
 import { Invitacion } from "./Invitacion";
+import { Locacion } from "./Locacion";
 
 export class EventoCerrado extends Evento {
 
-    //static val COEF_EXITO = 0.9
-    invitados: Array<Invitacion> = [];
-    //Set<Invitacion> invitados = newHashSet
+    invitados: Array<Invitacion> = new Array<Invitacion>();
     unaCapacidadMaxima: number;
-    //int capacidadMaxima = 0
 
     crearInvitacion(elInvitado: Usuario, unaCantidadDeAcompanantes: number): void {
         if (this.hayCapacidadDisponible(unaCantidadDeAcompanantes + 1) && this.fechaAnteriorALaLimite()) {
@@ -18,11 +16,6 @@ export class EventoCerrado extends Evento {
         } else {
             throw "No se puede generar la invitacion"
         }
-    }
-
-    getInvitadosDelEvento(): Array<Invitacion> {
-        //this.invitados.map[unUsuario].toList
-        return this.invitados;
     }
 
     hayCapacidadDisponible(unaCantidadTotal: Number): Boolean {
@@ -75,11 +68,6 @@ export class EventoCerrado extends Evento {
         else { return false }
     }
 
-    invitacionesAceptadas(): number {
-        return 0
-        //return this.invitados.filter[invitacion | invitacion.aceptada === true].size()
-    }
-
     esUnFracaso(): Boolean {
         return true
         //return !this.cancelado && LocalDateTime.now().isAfter(this.fechaFinalizacion) && asistenciaFracaso()
@@ -92,10 +80,45 @@ export class EventoCerrado extends Evento {
         }
         else { return false }
         */
-       return true
+        return true
     }
 
     usuariosCercanosAlEvento(usuario: Usuario): Boolean {
         throw "No se puede notificar al usuario."
+    }
+
+    //Aca son todas cosas que usamos por ahora y agregadas nuevas.
+    getInvitadosDelEvento(): Array<Invitacion> {
+        return this.invitados;
+    }
+
+    invitacionesAceptadas(): number {
+        let invitacionesAceptadas: number = 0
+        this.invitados.forEach(element => {
+            if (element.estadoInvitacion()) {
+                invitacionesAceptadas = invitacionesAceptadas + element.cantidadDeAcompanantes
+            }
+        });
+        return invitacionesAceptadas
+    }
+
+    invitacionesRechazadas(): number {
+        let invitacionesRechazadas: number = 0
+        this.invitados.forEach(element => {
+            if (!element.estadoInvitacion()) {
+                invitacionesRechazadas = invitacionesRechazadas + element.cantidadDeAcompanantes
+            }
+        });
+        return invitacionesRechazadas
+    }
+
+    //Prueba
+    agregarInvitacion(unaInvitacion: Invitacion): void {
+        this.invitados.push(unaInvitacion)
+    }
+
+    constructor(unNombre: string, unOrganizador: Usuario, unaLocacion: Locacion, fechaInicio: Date, fechaFinal: Date, fechaLimite: Date, capacidad: number) {
+        super(unNombre, unOrganizador, unaLocacion, fechaInicio, fechaFinal, fechaLimite)
+        this.unaCapacidadMaxima = capacidad;
     }
 }

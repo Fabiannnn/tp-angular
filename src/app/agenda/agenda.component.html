@@ -1,54 +1,57 @@
 <h4>Hoy</h4>
 <br />
-<div class="container" *ngFor="let d of dia">
-
+<div class="container" *ngFor="let d of EventosAgendaHoy">
   <div class="row">
     <div class="col-sm-3">
-      {{ d.fecha | date:'dd/MM/yyy HH:mm'}}
+      {{ d.fechaDeInicio | date:'dd/MM/yyy HH:mm'}}
     </div>
     <div class="col-sm-3">
       {{d.nombre}}
     </div>
     <div class="col-sm-3">
-      {{ d.lugar }}
+      {{ d.nombreLocacion()}}
     </div>
     <div class="col-sm-3">
-      {{ d.motivo }}
+      {{ d.nombreOrganizador()}}
     </div>
   </div>
 
 </div>
 <br />
 <h4>Esta semana</h4>
-<div class="container" *ngFor="let s of semana">
+<div class="container" *ngFor="let s of EventosAgendaSemana">
   <br />
   <div class="row">
     <div class="col-sm-3">
-      {{ s.timestamp}}
+      {{ s.fechaDeInicio | date:'dd/MM/yyy HH:mm'}}
     </div>
     <div class="col-sm-3">
       {{s.nombre}}
     </div>
-    <div class="col-sm-3"> {{ s.lugar }} </div>
     <div class="col-sm-3">
-      {{ s.motivo }}
+      {{ s.nombreLocacion() }}
+    </div>
+    <div class="col-sm-3">
+      {{ s.nombreOrganizador() }}
     </div>
   </div>
 </div>
+<br />
+<h4>Próximos Eventos</h4>
+<div class="container" *ngFor="let p of EventosAgendaProximos">
   <br />
-  <h4>Próximos Eventos</h4>
-  <div class="container" *ngFor="let p of proximos">
-    <br />
-    <div class="row">
-      <div class="col-sm-3">
-        {{ p.timestamp}}
-      </div>
-      <div class="col-sm-3">
-        {{p.nombre}}
-      </div>
-      <div class="col-sm-3"> {{ p.lugar }} </div>
-      <div class="col-sm-3">
-        {{ p.motivo }}
-      </div>
+  <div class="row">
+    <div class="col-sm-3">
+      {{ p.fechaDeInicio | date:'dd/MM/yyy HH:mm'}}
+    </div>
+    <div class="col-sm-3">
+      {{p.nombre}}
+    </div>
+    <div class="col-sm-3">
+      {{ p.nombreLocacion() }}
+    </div>
+    <div class="col-sm-3">
+      {{ p.nombreOrganizador() }}
     </div>
   </div>
+</div>

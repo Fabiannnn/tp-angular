@@ -2,10 +2,10 @@ import { Usuario } from "./Usuario";
 import { Point } from "./Point";
 
 export class Locacion {
-    punto: Point;
-    posicionX: number;
-    posicionY: number;
-    nombre: String;
+  punto: Point;
+  posicionX: number;
+  posicionY: number;
+  nombre: String;
 
 /*	distancia(otroPunto: Point): number {
 		return this.punto.distance(otroPunto)

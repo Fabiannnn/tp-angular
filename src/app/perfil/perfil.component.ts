@@ -1,9 +1,8 @@
 
 import { Component, OnInit } from '@angular/core';
-import { Usuario } from '../angularDomain/Usuario';
 import { ServiceUsuarioService } from '../services/ServiceUsuario.service';
 import { subscribeOn } from 'rxjs/operators';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'perfil',
@@ -13,8 +12,17 @@ import { Router } from '@angular/router';
 export class PerfilComponent implements OnInit {
   usuarioPerfil: any = {};
   errors = [];
-  constructor(private serviceUsuario: ServiceUsuarioService, private router:Router) {
+  // amigos 
+  // cantidadAmigos
+  constructor(private serviceUsuario: ServiceUsuarioService, private router: Router, private route:ActivatedRoute) {
 
+    this.usuarioPerfil = this.serviceUsuario.usuarioActivo
+    // this.amigos = this.usuarioPerfil.amigos
+    // this.cantidadAmigos = this.amigos.length
+    // console.log(this.amigos)
+    //  console.log(this.amigos.size) length tampoco
+    //      this.cantAmigos = this.amigos.length
+ //this.router. routeReuseStrategy.shouldReuseRoute=()=>false
   }
 
   ngOnInit() {
@@ -30,13 +38,14 @@ export class PerfilComponent implements OnInit {
       }
     )
   }
-  eliminarAmigo(idAmigo){
+  eliminarAmigo(idAmigo) {
     this.serviceUsuario.eliminarAmigo(idAmigo)
-    this.resfrescarPantalla()
+ //   this.router. routeReuseStrategy.shouldReuseRoute=()=>false
+   this.resfrescarPantalla()
   }
- resfrescarPantalla(){
-    this.router.navigateByUrl('/misEventos/agenda', { skipLocationChange: true }).then(() =>
-    this.router.navigate(["/perfil"]));
+  resfrescarPantalla() {
+    this.router.navigateByUrl('/refresh', { skipLocationChange: true }).then(() =>
+      this.router.navigate(["/perfil"]));
   }
 
 }

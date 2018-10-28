@@ -1,5 +1,5 @@
-import { TipoDeUsuario } from "./TipoDeUsuario";
-import { Usuario } from "./Usuario";
+import { TipoDeUsuario } from './TipoDeUsuario';
+import { Usuario } from './Usuario';
 export class UsuarioAmateur implements TipoDeUsuario {
     categoria(): String {
         return "Amateur"
