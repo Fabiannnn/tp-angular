@@ -1,36 +1,59 @@
 <div class="container-fluid"><br>
   <div class="row">
-    <div class="col-sm-2">
+    <div class="col-sm-3">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="#"><img src="./assets/elnegro.png" alt="Elne"> </a>
+          <a class="nav-link" href="#"><img src="./assets/elnegro.png" class="rounded float-left" alt="Elne"></a>
         </li>
         <!--
         <li class="nav-item active">
           Id Usuario: {{usuarioPerfil.id}}
         </li>-->
-        <br>
         <li class="nav-item">
-          <b>Usuario: </b> {{usuarioPerfil.nombreUsuario}}
+          <span class="pull-left lead">{{usuarioPerfil.nombreApellido}}</span>
+        </li>
+        <li class="nav-item">
+          <span class="pull-left">@{{usuarioPerfil.nombreUsuario}}</span>
         </li>
         <br>
         <li class="nav-item active">
-          <b>Nombre y Apellido:</b> <br> {{usuarioPerfil.nombreApellido}}
+          <span class="pull-left fa fa-envelope"></span>
+          <span class="pull-left">{{usuarioPerfil.email}}</span>
         </li>
-        <br>
-        <li class="nav-item active">
-          <b>E-mail: </b> <br> {{usuarioPerfil.email}}
-        </li>
-        <br>
         <li *ngIf="usuarioPerfil.amigos" class="nav-item active">
-          <b>Seguidores: </b> {{usuarioPerfil.amigos.length}}
+          <span class="pull-left fa fa-users"></span>
+          <span class="pull-left">Seguidores: {{usuarioPerfil.amigos.length}}</span>
         </li>
-        <br>
         <li class="nav-item active" *ngIf="usuarioPerfil.tipoDeUsuario">
-          <b>Tipo de Usuario: </b> <br> {{usuarioPerfil.tipoDeUsuario.nom}}
+          <span class="pull-left fa fa-star"></span>
+          <span class="pull-left">{{usuarioPerfil.tipoDeUsuario.nom}}</span>
         </li>
       </ul>
     </div>
+    <div class="col-sm-9 table-wrapper-scroll-y">
+      <h3>Amigos</h3>
+      <br />
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Email</th>
+            <th>Eliminar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let a of usuarioPerfil.amigos">
+            <td>{{a.nombreApellido}}</td>
+            <td>{{a.email}}</td>
+            <td>
+              <button id="eliminarAmigo" type="button" title="Eliminar Amigo" class="btn btn-ligth" (click)="eliminarAmigo(a.id)">
+                <i class="fa fa-remove" style="font-size:1.05em; color:red"></i>
+              </button>
+            </td>
+        </tbody>
+      </table>
+    </div>
+    <!--
     <div class="col-sm-10">
       <div class="container" >
         <h4>Amigos</h4>
@@ -54,5 +77,6 @@
         </div>
       </div>
     </div>
+    -->
   </div>
 </div>

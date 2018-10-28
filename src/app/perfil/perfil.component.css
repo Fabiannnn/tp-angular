@@ -3,3 +3,10 @@ font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
  'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 text-align: center;
 font-size: 0.9em}
+
+.table-wrapper-scroll-y {
+    display: block;
+    max-height: 50%;
+    overflow-y: auto;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+  }
