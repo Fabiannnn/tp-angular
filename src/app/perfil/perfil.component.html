@@ -32,10 +32,10 @@
       </ul>
     </div>
     <div class="col-sm-10">
-      <div class="container">
+      <div class="container" >
         <h4>Amigos</h4>
         <br />
-        <div class="container" *ngFor="let a of usuarioPerfil.amigos">
+        <div  class="container" *ngFor="let a of usuarioPerfil.amigos">
           <br />
           <div class="row">
             <div class="col-sm-3">
@@ -44,10 +44,9 @@
             <div class="col-sm-3">
               {{a.email}}
             </div>
-            <div class="col-sm-3">
-              <button id="eliminarAmigo" type="button" title="Eliminar Amigo" class="btn btn-ligth" placement="right"
-                (click)="eliminarAmigo(a.id)">
-                <i class="fa fa-remove" style="font-size:1.05em;color:red"></i>
+            <div class="col-sm-1">
+              <button   id="eliminarAmigo" type="button" title="Eliminar Amigo" class="btn btn-ligth" (click)="eliminarAmigo(a.id)">
+                <i class="fa fa-remove" style="font-size:1.05em; color:red"></i>
               </button>
             </div>
             <br />

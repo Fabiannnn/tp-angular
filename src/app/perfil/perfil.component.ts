@@ -2,7 +2,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ServiceUsuarioService } from '../services/ServiceUsuario.service';
 import { subscribeOn } from 'rxjs/operators';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router'; 
+//ActivatedRoute,
 
 @Component({
   selector: 'perfil',
@@ -14,8 +15,8 @@ export class PerfilComponent implements OnInit {
   errors = [];
   // amigos 
   // cantidadAmigos
-  constructor(private serviceUsuario: ServiceUsuarioService, private router: Router, private route:ActivatedRoute) {
-
+  constructor(private serviceUsuario: ServiceUsuarioService, private router: Router) {
+//, private route:ActivatedRoute
     this.usuarioPerfil = this.serviceUsuario.usuarioActivo
     // this.amigos = this.usuarioPerfil.amigos
     // this.cantidadAmigos = this.amigos.length
