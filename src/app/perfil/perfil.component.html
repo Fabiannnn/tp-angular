@@ -33,19 +33,19 @@
     </div>
     <div class="col-sm-10">
       <div class="container" >
-        <h4>Amigos</h4>
+        <h4 id=textoAmigos >Amigos</h4>
         <br />
-        <div  class="container" *ngFor="let a of usuarioPerfil.amigos">
+        <div  class="container" *ngFor="let a of  usuarioPerfil.amigos"><!-- usuarioPerfil.amigos-->
           <br />
           <div class="row">
-            <div class="col-sm-3">
+            <div class="col-sm-4">
               {{a.nombreApellido}}
             </div>
-            <div class="col-sm-3">
+            <div class="col-sm-4">
               {{a.email}}
             </div>
-            <div class="col-sm-1">
-              <button   id="eliminarAmigo" type="button" title="Eliminar Amigo" class="btn btn-ligth" (click)="eliminarAmigo(a.id)">
+            <div class="col-sm-2">
+              <button  type="button" title="Eliminar Amigo" class="btn btn-ligth" (click)="eliminarAmigo(a.id)">
                 <i class="fa fa-remove" style="font-size:1.05em; color:red"></i>
               </button>
             </div>

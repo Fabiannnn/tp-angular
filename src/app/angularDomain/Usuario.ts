@@ -2,11 +2,12 @@ import { TipoDeUsuario } from './TipoDeUsuario';
 import { Invitacion } from './Invitacion';
 import { Entrada } from './Entrada';
 import { Point } from './Point';
+import{Evento} from './Evento';
 //import { serviceUsuarioService } from '../services/serviceUsuario.service';
 
 export class Usuario {
     id: number
-        nombreUsuario: String
+    nombreUsuario: String
     nombreApellido: String;
     email: String;
     amigos: Array<Usuario> = new Array<Usuario>();
@@ -21,6 +22,7 @@ export class Usuario {
      //= new Array<String>;
      entradaComprada: Array<String>; //creo que deberia ser de eventos
      eventosOrganizados: Array<String>; //Creo que deberia ser de eventos*/
+eventosAgenda:Array<Evento>= new Array<Evento>();
 
     constructor(
 
@@ -59,11 +61,11 @@ export class Usuario {
 
     /*   invitacionesRecibidas(): Array<String> {
         return this.invitaciones
-    }
- 
+    }*/
+ /*
     entradasCompradas(): Array<String> {
         return this.entradaComprada
-    }*/
+    }*
   /*  recibirInvitacion(invitacion: Invitacion) {
         this.invitaciones.push(invitacion)
         //agregarMensaje("Fuiste invitado a" + invitacion.unEventoCerrado + ", con " + invitacion.cantidadDeAcompanantes)
@@ -73,21 +75,8 @@ export class Usuario {
         return 20 //Period.between(fechaNacimiento, LocalDate.now()).getYears
     }
 
-    /* 
-     static fromJson(usuJson) {
-        console.log("usuJson")
-        let usuario1 = new usu(usuJson.id, usuJson.nombreUsuario, usuJson.nombreApellido, usuJson.email, usuJson.amigos)
-        console.log(usuario1)
-        console.log("en usu from json"+ usuario1)
-        return usuario1
-      
-    }*/
-
-
-   static fromJson(usuarioJson){
-           console.log("usuarioJson de usuario" + usuarioJson)
-           console.log("tipoUsuario"+usuarioJson.tipoDeUsuario.nom)
-           let usuarioPerfil= new Usuario(usuarioJson.nombreUsuario, usuarioJson.nombreApellido, usuarioJson.email, usuarioJson.amigos,  usuarioJson.id, usuarioJson.tipoDeUsuario)
-       return usuarioPerfil
-       }
+    static fromJson(usuarioJson){
+        let usuarioPerfil= new Usuario(usuarioJson.nombreUsuario, usuarioJson.nombreApellido, usuarioJson.email, usuarioJson.amigos,  usuarioJson.id, usuarioJson.tipoDeUsuario)
+    return usuarioPerfil
+    }
 }

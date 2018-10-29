@@ -5,9 +5,9 @@ import { Locacion } from "./Locacion";
 
 export class EventoAbierto extends Evento {
 
-    edadMinima: Number;
-    precioEntrada: Number;
-    //double precioEntrada
+    edadMinima: number;
+    precioEntrada: number;
+  //  double precioEntrada
     entradas: Array<Entrada> = [];
     //Set<Entrada> entradas = newHashSet
 /*
@@ -20,7 +20,7 @@ export class EventoAbierto extends Evento {
         throw "Un EventoAbierto no puede ejecutar ordenes de Invitacion"
     }*/
 
-    puedeComprarEntrada(elComprador: Usuario): void {
+  /*  puedeComprarEntrada(elComprador: Usuario): void {
         if (!this.edadValida(elComprador) || !this.fechaAnteriorALaLimite() || !this.hayEntradasDisponibles()) {
             throw "No se puede Comprar la Entrada"
         }
@@ -29,7 +29,7 @@ export class EventoAbierto extends Evento {
     edadValida(elComprador: Usuario): Boolean {
         return elComprador.edad() > this.edadMinima
     }
-
+*/
     //Me parece que es void.
  /*   generarEntrada(elComprador: Usuario): void {
         //let nuevaEntrada
@@ -46,15 +46,15 @@ export class EventoAbierto extends Evento {
         //this.entradas.forEach[entrada | entrada.cancelacionDeEvento()]
     }
 
-    postergarElEvento(nuevaFechaHoraInicio: Date): void {
+    /*postergarElEvento(nuevaFechaHoraInicio: Date): void {
         super.postergarElEvento(nuevaFechaHoraInicio)
         //this.entradas.forall[invitacion | invitacion.mensajesPorPostergacion(this.fechaDeInicio, this.fechaFinalizacion, this.fechaLimiteConfirmacion)]
-    }
+    }*/
 
-    capacidadMaxima(): number {
+    /*capacidadMaxima(): number {
         return this.locacion.capacidadMaxima()
-    }
-
+    }*/
+/*
     hayEntradasDisponibles(): Boolean {
         return this.entradas.length < this.capacidadMaxima()
     }
@@ -85,7 +85,7 @@ export class EventoAbierto extends Evento {
 
     usuariosCercanosAlEvento(usuario: Usuario): Boolean {
         return true/* this.locacion.estaDentroDelRadioDeCercania(usuario)*/
-    }
+//}
 
     //Cosas que usamos y agregamos para typescript.
     registrarCompraEnEvento(nuevaEntrada: Entrada): void {
@@ -104,9 +104,9 @@ export class EventoAbierto extends Evento {
         return this.entradas.length
     }
 
-    constructor(unNombre: string, unOrganizador: Usuario, unaLocacion: Locacion, fechaInicio: Date, fechaFinal: Date, fechaLimite: Date, unaEdadMinima: number, unPrecio: number) {
+  /*  constructor(unNombre: string, unOrganizador: Usuario, unaLocacion: Locacion, fechaInicio: Date, fechaFinal: Date, fechaLimite: Date, unaEdadMinima: number, unPrecio: number) {
         super(unNombre, unOrganizador, unaLocacion, fechaInicio, fechaFinal, fechaLimite)
         this.edadMinima = unaEdadMinima;
         this.precioEntrada = unPrecio;
-    }
+    }*/
 }

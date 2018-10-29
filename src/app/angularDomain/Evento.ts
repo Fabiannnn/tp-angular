@@ -1,56 +1,62 @@
 import { Usuario } from "./Usuario";
 import { Locacion } from "./Locacion";
+import * as moment from 'moment';
 
-export abstract class Evento {
+
+export class Evento {
 
     nombre: String;
-    organizador: Usuario;
-    fechaDeInicio: Date;
-    fechaFinalizacion: Date;
-    locacion: Locacion;
-    fechaLimiteConfirmacion: Date;
-    artistas: Array<String> = [];
+    organizador: String;
+    fechaDeInicio: String;
+  //  fechaFinalizacion: String;
+    locacion: String;
+    fechaLimiteConfirmacion: String;
+    edadMinima: number;
+   precioEntrada: number;
+   // artistas: Array<String> = [];
     cancelado: Boolean;
-    postergado: Boolean;
+   postergado: Boolean;
 
-    abstract esUnFracaso(): void;
-    abstract capacidadMaxima(): Number;
-    abstract cancelarEvento(): void;
-    abstract esExitoso(): Boolean;
-    //abstract ejecutarOrdenesDeInvitacion(): void;
-    abstract cantidadAsistentes(): Number;
+    constructor(nombre?, edadMinima?, precioEntrada?, fechaLimiteConfirmacion?, fechaDeInicio?, locacionNombre?, usuarioOrganizador?) {
+        this.nombre = nombre
+        this.edadMinima=edadMinima
+        this.precioEntrada=precioEntrada
+        this.fechaLimiteConfirmacion = fechaLimiteConfirmacion
+        this.fechaDeInicio = fechaDeInicio
+        this.locacion = locacionNombre
+        this.organizador = usuarioOrganizador
 
-    duracion(): Number {
-        return 0
-        //return Duration.between(this.fechaDeInicio, this.fechaFinalizacion).getSeconds() / 3600;
+    }
+    static fromJson(eventoJson){
+        let eventoAgenda = new Evento(eventoJson.nombre, eventoJson.EdadMinima, eventoJson.precioEntrada,
+            eventoJson.fechaLimiteConfirmacion,  eventoJson.fechaDeInicio, eventoJson.locacionNombre, eventoJson.usuarioOrganizador)
+            console.log("de static fromJson manual"+ eventoJson)
+            return eventoAgenda
+    }
+    
+    toJSON(): any {
+        const result: any = Object.assign({}, this);
+        result.fechaDeInicio = moment().format("YYYY/MM/DD HH:mm")
+        result.fechaLimiteConfirmacion = moment().format("YYYY/MM/DD HH:mm")
+    
+        return result;
     }
 
-    fechaAnteriorALaLimite(): Boolean {
-        return true
-        //return LocalDate.now() <= LocalDate.from(this.fechaLimiteConfirmacion);
+    static fromJSON(eventoJSON) {
+        const result: Evento = Object.assign(new Evento(), eventoJSON);
+        console.log(result)
+        return result;
     }
+    
+}
 
-    postergarElEvento(nuevaFechaHoraInicio: Date): void {
-        this.postergado = true;
-        this.cambiarFechasEvento(nuevaFechaHoraInicio);
-    }
-    //Mepa que debería ser void.
-    cambiarFechasEvento(nuevaFechaHoraInicio: Date): void {
-        var difTiempo = this.calcularDiferenciaTiempo(nuevaFechaHoraInicio);
-        //this.fechaDeInicio.plusHours(difTiempo);
-        //this.fechaFinalizacion.plusHours(difTiempo);
-        //this.fechaLimiteConfirmacion.plusDays((difTiempo / 24) as Number);
-    }
-
+/*
     calcularDiferenciaTiempo(nuevaFechaHoraInicio: Date): Number {
         return 0
         //return Duration.between(this.fechaDeInicio, nuevaFechaHoraInicio).toHours();
     }
 
-    validarDatosEvento(): Boolean {
-        return this.validarDatosCompletos() && this.validarFechas();
-    }
-
+  
     validarFechas(): Boolean {
         /*
         if (!((this.fechaLimiteConfirmacion < LocalDate.from(this.fechaDeInicio)) && (this.fechaDeInicio < this.fechaFinalizacion))) {
@@ -58,7 +64,7 @@ export abstract class Evento {
         } else {
             return true;
         }
-        */
+        
         return true
     }
 
@@ -69,11 +75,6 @@ export abstract class Evento {
         } else { return true }
     }
 
-    abstract usuariosCercanosAlEvento(usuario: Usuario): Boolean
-
-    toString(): String {
-        return this.nombre
-    }
 
     //Cosas agregadas o usadas para typescript.
     nombreLocacion(): String {
@@ -83,12 +84,19 @@ export abstract class Evento {
     nombreOrganizador(): String {
         return this.organizador.nombreApellido   }
 
-    constructor(unNombre: string, unOrganizador: Usuario, unaLocacion: Locacion, fechaInicio: Date, fechaFinal: Date, fechaLimite: Date) {
         this.nombre = unNombre
-        this.organizador = unOrganizador
-        this.locacion = unaLocacion
-        this.fechaDeInicio = fechaInicio
-        this.fechaFinalizacion = fechaFinal
-        this.fechaLimiteConfirmacion = fechaLimite
+          this.locacion= unaLocacion 
+          this.fechaLimiteConfirmacion= fechaLimite
+       this.organizador= unOrganizador
+   
+        this.fechaDeInicio= fechaInicio
+        this.fechaFinalizacion= fechaFinal
+ 
     }
-}
+
+    static fromJSON(eventoJSON) {
+        const result: Evento = Object.assign(new Evento( ), eventoJSON);
+console.log(result);
+        return result;
+      }
+ */

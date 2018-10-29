@@ -6,8 +6,8 @@ export class Locacion {
   posicionX: number;
   posicionY: number;
   nombre: String;
-
-/*	distancia(otroPunto: Point): number {
+  
+  /*	distancia(otroPunto: Point): number {
 		return this.punto.distance(otroPunto)
 	}
 */

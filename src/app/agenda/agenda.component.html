@@ -1,24 +1,25 @@
-<h4>Hoy</h4>
+<h4>Hoy </h4>
 <br />
-<div class="container" *ngFor="let d of EventosAgendaHoy">
+<div class="container"  *ngFor="let d of eventosAgenda" ><!--*ngFor="let d of eventosDeHoy"-->
   <div class="row">
     <div class="col-sm-3">
-      {{ d.fechaDeInicio | date:'dd/MM/yyy HH:mm'}}
+      
+     {{ d.nombre}}
     </div>
-    <div class="col-sm-3">
+    <div class="col-sm-3" >
+      {{d.nombreLocacion}}
+    </div>
+    <div class="col-sm-3" >
       {{d.nombre}}
     </div>
     <div class="col-sm-3">
-      {{ d.nombreLocacion()}}
-    </div>
-    <div class="col-sm-3">
-      {{ d.nombreOrganizador()}}
+      {{ eventosDeHoy.usuarioOrganizador}}
     </div>
   </div>
 
 </div>
 <br />
-<h4>Esta semana</h4>
+<!--<h4>Esta semana</h4>
 <div class="container" *ngFor="let s of EventosAgendaSemana">
   <br />
   <div class="row">
@@ -54,4 +55,4 @@
       {{ p.nombreOrganizador() }}
     </div>
   </div>
-</div>
+</div>-->

@@ -8,7 +8,7 @@ export class EventoCerrado extends Evento {
     invitados: Array<Invitacion> = new Array<Invitacion>();
     unaCapacidadMaxima: number;
 
-    crearInvitacion(elInvitado: Usuario, unaCantidadDeAcompanantes: number): void {
+   /* crearInvitacion(elInvitado: Usuario, unaCantidadDeAcompanantes: number): void {
         if (this.hayCapacidadDisponible(unaCantidadDeAcompanantes + 1) && this.fechaAnteriorALaLimite()) {
             let nuevaInvitacion = new Invitacion(this, elInvitado, unaCantidadDeAcompanantes)
             this.registrarInvitacionEnEvento(nuevaInvitacion)
@@ -16,7 +16,7 @@ export class EventoCerrado extends Evento {
         } else {
             throw "No se puede generar la invitacion"
         }
-    }
+    }*/
 
     hayCapacidadDisponible(unaCantidadTotal: Number): Boolean {
         return unaCantidadTotal <= (this.capacidadMaxima() - this.cantidadAsistentes())
@@ -52,10 +52,10 @@ export class EventoCerrado extends Evento {
         //this.invitados.filter[invitados | invitados.aceptada != false].forall[invitacion | invitacion.notificacionDeCancelacion()]
     }
 
-    postergarElEvento(nuevaFechaHoraInicio: Date): void {
+   /* postergarElEvento(nuevaFechaHoraInicio: Date): void {
         super.postergarElEvento(nuevaFechaHoraInicio)
         //this.invitados.forall[invitacion | invitacion.NotificacionDePostergacion(fechaDeInicio, fechaFinalizacion, fechaLimiteConfirmacion)]
-    }
+    }*/
 
     esExitoso(): Boolean {
         return !this.cancelado && this.asistenciaExitosa()
@@ -117,8 +117,8 @@ export class EventoCerrado extends Evento {
         this.invitados.push(unaInvitacion)
     }
 
-    constructor(unNombre: string, unOrganizador: Usuario, unaLocacion: Locacion, fechaInicio: Date, fechaFinal: Date, fechaLimite: Date, capacidad: number) {
-        super(unNombre, unOrganizador, unaLocacion, fechaInicio, fechaFinal, fechaLimite)
-        this.unaCapacidadMaxima = capacidad;
-    }
+  //  constructor(unNombre: string, unOrganizador: Usuario, unaLocacion: Locacion, fechaInicio: Date, fechaFinal: Date, fechaLimite: Date, capacidad: number) {
+    //    super(unNombre, unOrganizador, unaLocacion, fechaInicio, fechaFinal, fechaLimite)
+      //  this.unaCapacidadMaxima = capacidad;
+  //  }
 }
