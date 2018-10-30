@@ -13,13 +13,19 @@ import { map } from 'rxjs/operators';
 
 import { Http, Response } from '@angular/http';
 import { REST_SERVER_URL } from './configuration';
+import { toDate, formatDate } from '@angular/common/src/i18n/format_date';
+import { format } from 'util';
 @Injectable({
   providedIn: 'root'
 })
 export class ServiceEventoService {
   EVENTOS_CERRADO: Array<EventoCerrado> = new Array<EventoCerrado>();
   EVENTOS_ABIERTO: Array<EventoAbierto> = new Array<EventoAbierto>();
-  eventosAgenda;
+  eventosAgenda:Evento[];
+ /* eventosAgendaHoy:Evento[];
+  eventosAgendaSemana:Evento[];
+  eventosAgendaProximos:Evento[];*/
+   formatoFecha= "YYYY-MM-DD HH:mm";  
   idUsuario: String
   constructor(private http: Http) { this.idUsuario = "1" }
 
@@ -27,27 +33,26 @@ export class ServiceEventoService {
     //aplico la funcion de transformacion a cada elemento del arreglo
     //return res.json().map(eventoJson => evento.fromJson(eventoJson))
     //aplico la funcion de transformacion a un unico elemento
-    return Evento.fromJson(res.json())
+    return res.json().map(evento =>Evento.fromJson(evento))
    }
   agendaUsuario() {
-   this.eventosAgenda = (this.http.get(REST_SERVER_URL + "/agendaUsuario/" + this.idUsuario).pipe(map(this.convertToEvento))).pipe();
-   console.log(this.eventosAgenda) 
-   return (this.eventosAgenda)
+   return  (this.http.get(REST_SERVER_URL + "/agendaUsuario/" + this.idUsuario).pipe(map(this.convertToEvento)));
   }
+  agendaHoy() {
+    return  (this.http.get(REST_SERVER_URL + "/agendaHoy/" + this.idUsuario).pipe(map(this.convertToEvento)));
+   }
+   agendaSemana() {
+    return  (this.http.get(REST_SERVER_URL + "/agendaSemana/" + this.idUsuario).pipe(map(this.convertToEvento)));
+   }
+   agendaProximos() {
+    return  (this.http.get(REST_SERVER_URL + "/agendaProximos/" + this.idUsuario).pipe(map(this.convertToEvento)));
+   }
+
 }
-
-  /*  getAgendaHoy(): Array<Evento> {
-      return (this.http.get(REST_SERVER_URL + "/usuarioAgenda/"+this.idUsuario).pipe(map(this.convertToEvento)))
-      return this.Eventos.filter(evento => moment(evento.fechaDeInicio).format('L') === moment().format('L'))
-    }
-  
-    getAgendaSemana(): Array<Evento> {
-      return("notengoganas")
-      return this.Eventos.filter(evento => (moment().format('L') < moment(evento.fechaDeInicio).format('L')) && (moment(evento.fechaDeInicio).format('L') < moment().add(7, 'days').format('L')))
-    }
-  
-    getAgendaProximos(): Array<Evento> {
-      return("notengoganas")
-      return this.Eventos.filter(evento => (moment(evento.fechaDeInicio).format('L')) > moment().add(7, 'days').format('L'))
-    }*/
-
+/*
+  agendaHoy(){
+ 
+    return this.eventosAgenda.filter(unEvento => 
+     ( this.getFecha(unEvento.fechaDeInicio) <  moment().add(1, 'days').format(this.formatoFecha) ))
+  }
+*/

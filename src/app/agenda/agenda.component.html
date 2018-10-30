@@ -1,58 +1,55 @@
 <h4>Hoy </h4>
 <br />
-<div class="container"  *ngFor="let d of eventosAgenda" ><!--*ngFor="let d of eventosDeHoy"-->
+<div class="container"  *ngFor="let d of eventosHoy" >
   <div class="row">
+      <div class="col-sm-3" >
+      {{d.fechaDeInicio}}
+    </div>  
     <div class="col-sm-3">
-      
-     {{ d.nombre}}
+      {{ d.nombre}}
     </div>
     <div class="col-sm-3" >
-      {{d.nombreLocacion}}
-    </div>
-    <div class="col-sm-3" >
-      {{d.nombre}}
+      {{d.locacion}}
     </div>
     <div class="col-sm-3">
-      {{ eventosDeHoy.usuarioOrganizador}}
+      {{ d.organizador}}
     </div>
   </div>
-
 </div>
 <br />
-<!--<h4>Esta semana</h4>
-<div class="container" *ngFor="let s of EventosAgendaSemana">
-  <br />
-  <div class="row">
-    <div class="col-sm-3">
-      {{ s.fechaDeInicio | date:'dd/MM/yyy HH:mm'}}
-    </div>
-    <div class="col-sm-3">
-      {{s.nombre}}
-    </div>
-    <div class="col-sm-3">
-      {{ s.nombreLocacion() }}
-    </div>
-    <div class="col-sm-3">
-      {{ s.nombreOrganizador() }}
+<h4>Esta semana</h4>
+<div class="container"  *ngFor="let s of eventosSemana" >
+    <div class="row">
+        <div class="col-sm-3" >
+        {{s.fechaDeInicio}}
+      </div>  
+      <div class="col-sm-3">
+        {{ s.nombre}}
+      </div>
+      <div class="col-sm-3" >
+        {{s.locacion}}
+      </div>
+      <div class="col-sm-3">
+        {{ s.organizador}}
+      </div>
     </div>
   </div>
-</div>
 <br />
 <h4>Próximos Eventos</h4>
-<div class="container" *ngFor="let p of EventosAgendaProximos">
-  <br />
+<div class="container" *ngFor="let p of eventosProximos">
+
   <div class="row">
+      <div class="col-sm-3" >
+      {{p.fechaDeInicio}}
+    </div>  
     <div class="col-sm-3">
-      {{ p.fechaDeInicio | date:'dd/MM/yyy HH:mm'}}
+      {{ p.nombre}}
+    </div>
+    <div class="col-sm-3" >
+      {{p.locacion}}
     </div>
     <div class="col-sm-3">
-      {{p.nombre}}
-    </div>
-    <div class="col-sm-3">
-      {{ p.nombreLocacion() }}
-    </div>
-    <div class="col-sm-3">
-      {{ p.nombreOrganizador() }}
+      {{ p.organizador}}
     </div>
   </div>
-</div>-->
+</div>

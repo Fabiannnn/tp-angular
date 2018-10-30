@@ -30,7 +30,6 @@ export class Evento {
     static fromJson(eventoJson){
         let eventoAgenda = new Evento(eventoJson.nombre, eventoJson.EdadMinima, eventoJson.precioEntrada,
             eventoJson.fechaLimiteConfirmacion,  eventoJson.fechaDeInicio, eventoJson.locacionNombre, eventoJson.usuarioOrganizador)
-            console.log("de static fromJson manual"+ eventoJson)
             return eventoAgenda
     }
     
@@ -38,7 +37,6 @@ export class Evento {
         const result: any = Object.assign({}, this);
         result.fechaDeInicio = moment().format("YYYY/MM/DD HH:mm")
         result.fechaLimiteConfirmacion = moment().format("YYYY/MM/DD HH:mm")
-    
         return result;
     }
 
