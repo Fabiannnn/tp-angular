@@ -7,7 +7,6 @@ export class EventoAbierto extends Evento {
 
     edadMinima: number;
     precioEntrada: number;
-  //  double precioEntrada
     entradas: Array<Entrada> = [];
     //Set<Entrada> entradas = newHashSet
 /*

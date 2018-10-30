@@ -6,9 +6,7 @@ import { subscribeOn } from 'rxjs/operators';
 import * as moment from 'moment';
 import { map } from 'rxjs/operators';
 
-//import { ServiceUsuarioService } from '../services/ServiceUsuario.service';
 
-//ActivatedRoute,
 export function mostrarError(component, error) {
   component.errors.push(error._body)
 }
@@ -33,16 +31,18 @@ export class AgendaComponent implements OnInit {
   eventosSemana: Evento[]
   eventosProximos: Evento[]
 
-  constructor(private serviceEvento: ServiceEventoService, private router: Router) {
 
+
+  constructor(private serviceEvento: ServiceEventoService, private router: Router) {
   }
+
   ngOnInit() {
-  
     this.getEventosAgenda()
     this.getEventosHoy()
     this.getEventosSemana()
     this.getEventosProximos() 
    }
+
   getEventosAgenda(){
     this.serviceEvento.agendaUsuario().subscribe(
       data => { this.eventosAgenda = data },

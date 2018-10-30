@@ -47,7 +47,12 @@ export class ServiceEventoService {
    agendaProximos() {
     return  (this.http.get(REST_SERVER_URL + "/agendaProximos/" + this.idUsuario).pipe(map(this.convertToEvento)));
    }
-
+   organizadosUsuarioAbiertos() {
+    return  (this.http.get(REST_SERVER_URL + "/organizadosUsuarioAbiertos/" + this.idUsuario).pipe(map(this.convertToEvento)));
+   }
+   organizadosUsuarioCerrados() {
+    return  (this.http.get(REST_SERVER_URL + "/organizadosUsuarioCerrados/" + this.idUsuario).pipe(map(this.convertToEvento)));
+   }
 }
 /*
   agendaHoy(){

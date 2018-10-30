@@ -2,7 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ServiceUsuarioService } from '../services/ServiceUsuario.service';
 import { subscribeOn } from 'rxjs/operators';
-import { Router } from '@angular/router'; 
+import { Router } from '@angular/router';
 //ActivatedRoute,
 export function mostrarError(component, error) {
   component.errors.push(error._body)
@@ -19,17 +19,17 @@ export class PerfilComponent implements OnInit {
   usuarioPerfil: any = {};
   errors = [];
   amigosUsuario
-eventosAgendaUsuario
-constructor(private serviceUsuario: ServiceUsuarioService, private router: Router) {
-//, private route:ActivatedRoute
+  eventosAgendaUsuario
+  constructor(private serviceUsuario: ServiceUsuarioService, private router: Router) {
+    //, private route:ActivatedRoute
     this.usuarioPerfil = this.serviceUsuario.usuarioActivo
-   //this.router. routeReuseStrategy.shouldReuseRoute=()=>false
+    //this.router. routeReuseStrategy.shouldReuseRoute=()=>false
   }
-  
+
   ngOnInit() {
     this.getUsuario()
     this.getAmigosUsuario()
-  //  this.getEventosAgenda()
+    //  this.getEventosAgenda()
 
   }
 
@@ -43,9 +43,9 @@ constructor(private serviceUsuario: ServiceUsuarioService, private router: Route
     )
   }
 
-   getEventosAgenda() {
+  getEventosAgenda() {
     this.serviceUsuario.eventosAgendaUsuario().subscribe(
-      data => { this.usuarioPerfil.eventosAgenda= data },
+      data => { this.usuarioPerfil.eventosAgenda = data },
       error => {
         console.log("error", error)
         this.errors.push(error._body)
@@ -64,8 +64,8 @@ constructor(private serviceUsuario: ServiceUsuarioService, private router: Route
   }
   eliminarAmigo(idAmigo) {
     this.serviceUsuario.eliminarAmigo(idAmigo)
- //   this.router. routeReuseStrategy.shouldReuseRoute=()=>false
-   this.resfrescarPantalla()
+    //   this.router. routeReuseStrategy.shouldReuseRoute=()=>false
+    this.resfrescarPantalla()
 
   }
   resfrescarPantalla() {

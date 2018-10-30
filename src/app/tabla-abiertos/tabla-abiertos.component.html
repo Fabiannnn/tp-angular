@@ -12,13 +12,13 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let e of misEventosAbiertos">
-        <td>{{e.fechaDeInicio | date: 'dd/MM/yyy HH:mm'}}</td>
+      <tr *ngFor="let e of eventosAbiertos">
+        <td>{{e.fechaDeInicio}}</td>
         <td>{{e.nombre}}</td>
-        <td>{{e.nombreLocacion()}}</td>
-        <td>{{e.entradasVendidas()}}</td>
-        <td>{{e.laEdadMinima()}}</td>
-        <td>{{e.precioDeEntrada()}}</td>
+        <td>{{e.locacion}}</td>
+        <td>{{e.ddd}</td>
+        <td>{{e.edadMinima}}</td>
+        <td>{{e.precioEntrada}}</td>
       </tr>
     </tbody>
   </table>
