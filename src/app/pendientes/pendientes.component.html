@@ -1,9 +1,9 @@
-<div class="col-sm-10">
+<div class="col-sm-12">
 
-  <div class="container">
-    <h4>Invitaciones Pendientes</h4>
-    <table class="table">
-      <thead>
+  <div class="col-sm-12 table-wrapper-scroll-y">
+    <h4 style="font-size: 1.5em">Invitaciones Pendientes</h4>
+    <table class="table table-bordered table-striped">
+      <thead style="font-size: 1em">
         <tr>
           <th>Fecha</th>
           <th>Evento</th>
@@ -14,29 +14,20 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th>20/11/2018</th>
-          <th>Cumpleaños</th>
-          <th>Triunvirato 3140</th>
-          <th>Perry White</th>
-          <th>0</th>
-          <th>Acciones</th>
-        </tr>
-        <tr>
-          <th>20/12/2018</th>
-          <th>AGS</th>
-          <th>Av. Santa Fe 2501</th>
-          <th>Jackson Hyde</th>
-          <th>2</th>
-          <th>Acciones</th>
-        </tr>
-        <tr>
-          <th>14/10/2018</th>
-          <th>Casamiento</th>
-          <th>Cramer 4550</th>
-          <th>Catherine Grant</th>
-          <th>1</th>
-          <th>Acciones</th>
+        <tr *ngFor="let inv of invitacionesPend">
+
+        <td> {{inv.fechaDeInicio}} </td>
+        <td> {{inv.unEventoCerrado}} </td>
+         <td> {{inv.lugarDelEvento}} </td>
+        <td> {{inv.unUsuario}} </td>
+        <td style="text-align: center"> {{inv.cantidadDeAcompanantes}} </td>
+        <td>
+            <button id="ConfirmarInvitacion" type="button" title="Confirmar Invitacion" class="btn btn-ligth" ><!-- (click)=""-->
+                <i class="fa fa-check" style="font-size:1.05em; color:green"></i></button>
+            <button id="RechazarInvitacion" type="button" title="Rechazar Invitacion" class="btn btn-ligth" >
+              <i class="fa fa-remove" style="font-size:1.05em; color:red"></i>
+            </button>
+          </td>
         </tr>
       </tbody>
     </table>

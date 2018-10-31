@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Usuario } from '../angularDomain/Usuario';
-import { usu } from '../angularDomain/usu';
 import { checkAndUpdateNode } from '@angular/core/src/view/view';
 import { map } from 'rxjs/operators';
 import { Evento } from '../angularDomain/Evento';
@@ -22,7 +21,7 @@ export class ServiceUsuarioService {
     return this.http.get(REST_SERVER_URL + "/usuarioPerfil/"+this.idUsuario).pipe(map(this.convertToUsuario))
   }
   amigosUsuario() {
-    return (this.http.get(REST_SERVER_URL + "/amigosUsuario/"+this.idUsuario).pipe(map(this.convertToUsuario))).pipe()
+    return (this.http.get(REST_SERVER_URL + "/amigosUsuario/"+this.idUsuario).pipe(map(this.convertToUsuario)))//.pipe()
   }
   private convertToUsuario(res: Response) {
     //aplico la funcion de transformacion a cada elemento del arreglo
