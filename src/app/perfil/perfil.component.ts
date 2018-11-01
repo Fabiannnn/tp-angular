@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ServiceUsuarioService } from '../services/ServiceUsuario.service';
 import { subscribeOn } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { Usuario } from '../angularDomain/Usuario';
 //ActivatedRoute,
 export function mostrarError(component, error) {
   component.errors.push(error._body)
@@ -18,15 +19,15 @@ export function mostrarError(component, error) {
 export class PerfilComponent implements OnInit {
   usuarioPerfil: any = {};
   errors = [];
-  amigosUsuario
+  amigosUsuario:Usuario[];
   eventosAgendaUsuario
   constructor(private serviceUsuario: ServiceUsuarioService, private router: Router) {
     //, private route:ActivatedRoute
-    this.usuarioPerfil = this.serviceUsuario.usuarioActivo
+   // this.usuarioPerfil = this.serviceUsuario.usuarioActivo
     //this.router. routeReuseStrategy.shouldReuseRoute=()=>false
   }
 
-  ngOnInit() {
+  ngOnInit() {  
     this.getUsuario()
     this.getAmigosUsuario()
     //  this.getEventosAgenda()
@@ -62,18 +63,28 @@ export class PerfilComponent implements OnInit {
       }
     )
   }
+
   eliminarAmigo(idAmigo) {
     this.serviceUsuario.eliminarAmigo(idAmigo)
     //   this.router. routeReuseStrategy.shouldReuseRoute=()=>false
-    this.resfrescarPantalla()
+    this.refrescarPantalla()
+   //this.reload()
+  }
 
-  }
-  resfrescarPantalla() {
-    this.router.navigateByUrl('/refresh', { skipLocationChange: true }).then(() =>
-      this.router.navigate(["/perfil"]));
-  }
+  refrescarPantalla(){
+  this.router.navigateByUrl('/refresh', { skipLocationChange: true }).then(() =>
+  this.router.navigate(["/perfil"]));
+  } 
+  reload(){
+    // Here is the other part of the trick
+    this.router.navigated = false;
+    this.router.navigate([this.router.url]);
+}
 
 }
+
+
+
 /*Datos del usuario: Foto, nombre y apellido, username, tipo de usuario, email y cantidad de amigos.
 Amigos: Listado de amigos del usuario. De cada amigo queremos ver su nombre y apellido y username. Además, desde el mismo listado, se podrá eliminar amigos.
 */

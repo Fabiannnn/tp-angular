@@ -26,5 +26,9 @@ export class ServiceInvitacionesService {
    return  (this.http.get(REST_SERVER_URL + "/invitacionesPendientes/" + this.idUsuario).pipe(map(this.convertToInvitacion)));
   }
 
+  rechazarInvitacion(unEventoCerrado: String) {
+    this.http.put(REST_SERVER_URL + "/rechazarInvitacion/" + this.idUsuario, unEventoCerrado).subscribe();
+   }
 
+ 
 }

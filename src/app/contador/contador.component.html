@@ -1,0 +1,15 @@
+<mat-card style="width:10em">
+
+  <mat-form-field  style="width:4em" class="mat-strouk-fab">
+    <input matInput disabled id="contador" value="{{contador.valor}}">
+  </mat-form-field>
+  <button mat-strouk-button color="primary" id="restar" (click)="contador.restar()"  >
+    <i class="material-icons">-</i>
+  </button>
+
+   <button mat-strouk-button color="primary" id="sumar" (click)="contador.sumar()" >
+    <i class="material-icons">+</i>
+  </button>
+
+  <!--&nbsp;  [matTooltipPosition]="position.value"-->
+</mat-card>

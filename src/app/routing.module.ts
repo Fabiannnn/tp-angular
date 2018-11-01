@@ -7,24 +7,29 @@ import { RefreshComponent } from '././refresh/refresh.component';
 import { OrganizadosPorMiComponent } from './organizados-por-mi/organizados-por-mi.component';
 import { NgModule } from '@angular/core'
 
+
 export const routes: Routes = [
-  {path: '', redirectTo: 'misEventos/agenda', pathMatch:'full'},
-  {path: 'perfil', component: PerfilComponent},
-  {path: 'refresh', component: RefreshComponent},
-  {path: 'misEventos', component: MisEventosComponent,
-  children:[
-    {path: '', redirectTo: 'agenda', pathMatch:'full'},
-    {path: 'agenda', component: AgendaComponent},
-    {path: 'organizados-por-mi', component: OrganizadosPorMiComponent},
-    {path: 'pendientes', component: PendientesComponent},
-    {path: '', component: AgendaComponent}
-  ]}
+  { path: '', redirectTo: 'misEventos/agenda', pathMatch: 'full' },
+  { path: 'perfil', component: PerfilComponent },
+  { path: 'refresh', component: RefreshComponent },
+
+  {
+    path: 'misEventos', component: MisEventosComponent,
+    children: [
+      { path: '', redirectTo: 'agenda', pathMatch: 'full' },
+      { path: 'agenda', component: AgendaComponent },
+      { path: 'organizados-por-mi', component: OrganizadosPorMiComponent },
+      { path: 'pendientes', component: PendientesComponent },
+      { path: '', component: AgendaComponent },
+      { path: 'refresh', component: RefreshComponent }
+    ]
+  }
 ]
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
 
-//export const routingComponents = [ TareasComponent, AsignarComponent ]
+export class AppRoutingModule { }
+//export const routingComponents = [ ContadorComponent, this ]

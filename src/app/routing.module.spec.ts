@@ -10,4 +10,6 @@ describe('RoutingModule', () => {
   it('should create an instance', () => {
     expect(routingModule).toBeTruthy();
   });
+  
 });
+

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ServiceInvitacionesService } from '../services/ServiceInvitaciones.service'
 import { Invitacion } from '../angularDomain/Invitacion';
 import { Router } from '@angular/router';
-import { Evento } from '../angularDomain/Evento';
+
 
 export function mostrarError(component, error) {
   component.errors.push(error._body)
@@ -17,10 +17,11 @@ export function mostrarError(component, error) {
 export class PendientesComponent implements OnInit {
   title = 'MIS INVITACIONES PENDIENTES';
   usuarioPerfil: any = {};
-  invitacionesPend: Invitacion[]
-
-  constructor(private serviceInvitaciones: ServiceInvitacionesService, private router: Router) {
-  }
+  invitacionesPend: Invitacion[];
+  errors = [];
+  constructor(private serviceInvitaciones: ServiceInvitacionesService, private router: Router) { 
+  
+   }
 
   ngOnInit() {
     this.getInvitacionesPendientes()
@@ -32,13 +33,21 @@ export class PendientesComponent implements OnInit {
       data => { this.invitacionesPend = data },
       error => {
         console.log("error", error)
-     //   this.errors.push(error._body)
+        this.errors.push(error._body)
       }
     )
   }
- /* unEventoCerrado(inv){
-        console.log(inv.unEventoCerrado)
-    return inv.unEventoCerrado
-  }*/
+  getRechazarInvitacion(unEventoCerrado) {
+    const unEventoCerradoNombre = ('{ "unEventoCerrado": "' + unEventoCerrado + '" }');
+    this.serviceInvitaciones.rechazarInvitacion(unEventoCerradoNombre)
+        //   this.router. routeReuseStrategy.shouldReuseRoute=()=>false
+  this.refrescarPantalla()
+  }
+ 
+  refrescarPantalla(){
+    this.router.navigateByUrl('/refresh', { skipLocationChange: true }).then(() =>
+    this.router.navigate(["/pendientes"]));
+  }
+
 }
 

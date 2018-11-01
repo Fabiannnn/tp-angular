@@ -15,7 +15,11 @@ import { OrganizadosPorMiComponent } from './organizados-por-mi/organizados-por-
 import { TablaCerradosComponent } from './tabla-cerrados/tabla-cerrados.component';
 import { TablaAbiertosComponent } from './tabla-abiertos/tabla-abiertos.component';
 import { RefreshComponent } from './refresh/refresh.component';
+import { ContadorComponent } from './contador/contador.component';
 import{HttpModule} from '@angular/http';
+/** Imports de Material */
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatButtonModule, MatFormFieldModule, MatInputModule, MatCardModule} from '@angular/material';
 
 @NgModule({
    declarations: [
@@ -31,12 +35,16 @@ import{HttpModule} from '@angular/http';
       TablaCerradosComponent,
       TablaAbiertosComponent,
       RefreshComponent,
-   
+      ContadorComponent
    ],
    imports: [
       BrowserModule,
       RouterModule.forRoot(routes),
-      HttpModule
+      HttpModule,
+      MatButtonModule,
+      MatFormFieldModule,
+      MatInputModule,
+      MatCardModule      
    ],
    providers: [],
    bootstrap: [
