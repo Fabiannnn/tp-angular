@@ -29,6 +29,8 @@ export class ServiceInvitacionesService {
   rechazarInvitacion(unEventoCerrado: String) {
     this.http.put(REST_SERVER_URL + "/rechazarInvitacion/" + this.idUsuario, unEventoCerrado).subscribe();
    }
-
+  aceptarInvitacion(unEventoCerradoYCantidadDeAcompanantes: String) {
+    this.http.put(REST_SERVER_URL + "/aceptarInvitacion/" + this.idUsuario, unEventoCerradoYCantidadDeAcompanantes).subscribe();
+   }
  
 }

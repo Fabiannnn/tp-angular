@@ -1,12 +1,16 @@
-import { Component, OnInit } from '@angular/core';
-import { ServiceInvitacionesService } from '../services/ServiceInvitaciones.service'
-import { Invitacion } from '../angularDomain/Invitacion';
 import { Router } from '@angular/router';
+import { map } from 'rxjs/operators';
+import { Component,Input,  OnInit } from '@angular/core';
+import { ServiceInvitacionesService } from '../services/ServiceInvitaciones.service';
+import { Invitacion } from '../angularDomain/Invitacion';
+import { ContadorComponent } from '../contador/contador.component';
+import { ContadorDomain } from '../contador/contadorDomain';
 
 
 export function mostrarError(component, error) {
   component.errors.push(error._body)
 }
+
 
 @Component({
   selector: 'pendientes',
@@ -19,13 +23,18 @@ export class PendientesComponent implements OnInit {
   usuarioPerfil: any = {};
   invitacionesPend: Invitacion[];
   errors = [];
+   @Input() 
+   valorInicial: number
+   contador: ContadorDomain
   constructor(private serviceInvitaciones: ServiceInvitacionesService, private router: Router) { 
   
    }
 
+  
+   
   ngOnInit() {
     this.getInvitacionesPendientes()
-  
+    this.contador = new ContadorDomain(this.valorInicial)
   }
 
   getInvitacionesPendientes() {
@@ -43,10 +52,16 @@ export class PendientesComponent implements OnInit {
         //   this.router. routeReuseStrategy.shouldReuseRoute=()=>false
   this.refrescarPantalla()
   }
- 
+  getAceptarInvitacion(unEventoCerrado, cantidadDeAcompanantes) {
+    const unEventoCerradoYCantidadDeAcompanantes = ('{ "unEventoCerrado": "' + unEventoCerrado + '",  "cantidadDeAcompanantesConfirmados": "' + cantidadDeAcompanantes + '" }');
+    console.log(unEventoCerradoYCantidadDeAcompanantes)
+    this.serviceInvitaciones.aceptarInvitacion(unEventoCerradoYCantidadDeAcompanantes)
+        //   this.router. routeReuseStrategy.shouldReuseRoute=()=>false
+    this.refrescarPantalla()
+  }
   refrescarPantalla(){
     this.router.navigateByUrl('/refresh', { skipLocationChange: true }).then(() =>
-    this.router.navigate(["/pendientes"]));
+    this.router.navigate([this.router.url]));
   }
 
 }

@@ -26,7 +26,7 @@ export class AgendaComponent implements OnInit {
   //private serviceUsuario: ServiceUsuarioService,
 
 
-  eventosAgenda: Evento[]
+  eventosAgenda: Array<Evento> = new Array<Evento>();
   eventosHoy: Evento[]
   eventosSemana: Evento[]
   eventosProximos: Evento[]

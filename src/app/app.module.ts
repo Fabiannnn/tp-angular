@@ -21,6 +21,7 @@ import{HttpModule} from '@angular/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatButtonModule, MatFormFieldModule, MatInputModule, MatCardModule} from '@angular/material';
 
+
 @NgModule({
    declarations: [
       AppComponent,
@@ -44,7 +45,9 @@ import {MatButtonModule, MatFormFieldModule, MatInputModule, MatCardModule} from
       MatButtonModule,
       MatFormFieldModule,
       MatInputModule,
-      MatCardModule      
+      MatCardModule,
+      BrowserAnimationsModule,
+
    ],
    providers: [],
    bootstrap: [

@@ -22,26 +22,27 @@
           <td> {{inv.lugarDelEvento}} </td>
           <td> {{inv.unUsuario}} </td>
           <td> 
-          <div>
-            <input style='width: 2.5em; text-align: right'  value={{inv.cantidadDeAcompanantes}}  required  pattern="^[0-9]+$" > 
-            </div>
-     <!--         <div style="text-align: rigth">
-            <mat-card-content style='width:10em'>
-              <app-contador style='width:10em' valorInicial={{inv.cantidadDeAcompanantes}} > </app-contador>
+      <!--    <div>
+            <input  type = "number" style='width: 2.5em; text-align: right'  value={{inv.cantidadDeAcompanantes}}   > 
+            </div>-->
+         <div style="text-align: rigth">
+            <mat-card-content style='width:12em'>
+              <app-contador #cont style='width:12m' valorInicial={{inv.cantidadDeAcompanantes}} > </app-contador>
             </mat-card-content> 
-            </div >-->
+            </div >
           </td>
           <td>
-            <button id="ConfirmarInvitacion" type="button" title="Confirmar Invitacion" class="btn btn-ligth">
-              <!-- (click)=""-->
+            <button id="ConfirmarInvitacion" type="button" title="Confirmar Invitacion"  class="btn btn-ligth" (click)="getAceptarInvitacion(inv.unEventoCerrado, cont.getValor())">  <!--getAceptarInvitacion(inv.unEventoCerrado, cont.getValor())"-->
               <i class="fa fa-check" style="font-size:1.05em; color:green"></i></button>
-            <button id="RechazarInvitacion" type="button" title="Rechazar Invitacion" class="btn btn-ligth" (click)="getRechazarInvitacion(inv.unEventoCerrado)">
+            <button id="RechazarInvitacion" type="button" title="Rechazar Invitacion" class="btn btn-ligth" (click)="getRechazarInvitacion(inv.unEventoCerrado) ">
               <i class="fa fa-remove" style="font-size:1.05em; color:red"></i>
             </button>
           </td>
         </tr>
+        
       </tbody>
     </table>
+
   </div>
 
 </div>
