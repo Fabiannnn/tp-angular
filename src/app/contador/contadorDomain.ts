@@ -14,7 +14,7 @@ export class ContadorDomain {
 
     sumar(invitacon) {
         if (this.valor < this.valorLimite) {
-        this.valor++
+            this.valor++
         } else { this.errorMessage = "max de acomp" }
         if (this.valor == this.valorLimite) {
             console.log(this.valor)
@@ -23,8 +23,10 @@ export class ContadorDomain {
 
     restar() {
         if (this.valor > 0) {
-        this.valor--
-        } else { this.errorMessage = "max de acomp" }
+            this.valor--
+        } else {
+        this.errorMessage = "max de acomp"
+        }
         console.log(this.valor)
 
     }

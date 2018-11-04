@@ -62,7 +62,7 @@ export class PendientesComponent implements OnInit {
   }
   refrescarPantalla(){
     this.router.navigateByUrl('/refresh', { skipLocationChange: true }).then(() =>
-    this.router.navigate(['./pendientes.Component']));
+    this.router.navigate(["./misEventos/pendientes"]));
   }
 
 }
