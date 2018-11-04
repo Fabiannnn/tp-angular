@@ -16,42 +16,45 @@ import { TablaCerradosComponent } from './tabla-cerrados/tabla-cerrados.componen
 import { TablaAbiertosComponent } from './tabla-abiertos/tabla-abiertos.component';
 import { RefreshComponent } from './refresh/refresh.component';
 import { ContadorComponent } from './contador/contador.component';
-import{HttpModule} from '@angular/http';
+import { HttpModule } from '@angular/http';
 /** Imports de Material */
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatButtonModule, MatFormFieldModule, MatInputModule, MatCardModule} from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule, MatFormFieldModule, MatInputModule, MatCardModule, MatTooltipModule } from '@angular/material';
 
 
 @NgModule({
-   declarations: [
-      AppComponent,
-      NavbarComponent,
-      MisEventosComponent,
-      PerfilComponent,
-      AgendaComponent,
-      OrganizadosPorMiComponent,
-      PendientesComponent,
-      SidebarComponent,
-      NotFoundComponent,
-      TablaCerradosComponent,
-      TablaAbiertosComponent,
-      RefreshComponent,
-      ContadorComponent
-   ],
-   imports: [
-      BrowserModule,
-      RouterModule.forRoot(routes),
-      HttpModule,
-      MatButtonModule,
-      MatFormFieldModule,
-      MatInputModule,
-      MatCardModule,
-      BrowserAnimationsModule,
+    declarations: [
+        AppComponent,
+        NavbarComponent,
+        MisEventosComponent,
+        PerfilComponent,
+        AgendaComponent,
+        OrganizadosPorMiComponent,
+        PendientesComponent,
+        SidebarComponent,
+        NotFoundComponent,
+        TablaCerradosComponent,
+        TablaAbiertosComponent,
+        RefreshComponent,
+        ContadorComponent
+    ],
 
-   ],
-   providers: [],
-   bootstrap: [
-      AppComponent
-   ]
+
+    imports: [
+        BrowserModule,
+        RouterModule.forRoot(routes),
+        HttpModule,
+        MatButtonModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatCardModule,
+        MatTooltipModule,
+        BrowserAnimationsModule
+    ],
+
+        providers: [],
+        bootstrap: [
+            AppComponent
+        ]
 })
 export class AppModule { }

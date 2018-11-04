@@ -26,6 +26,7 @@ export class PendientesComponent implements OnInit {
    @Input() 
    valorInicial: number
    contador: ContadorDomain
+   public errorMessage : string = ""
   constructor(private serviceInvitaciones: ServiceInvitacionesService, private router: Router) { 
   
    }
@@ -61,7 +62,7 @@ export class PendientesComponent implements OnInit {
   }
   refrescarPantalla(){
     this.router.navigateByUrl('/refresh', { skipLocationChange: true }).then(() =>
-    this.router.navigate([this.router.url]));
+    this.router.navigate(['./pendientes.Component']));
   }
 
 }

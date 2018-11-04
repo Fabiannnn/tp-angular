@@ -1,48 +1,58 @@
-
 <div class="col-sm-12">
-
   <div class="col-sm-12 table-wrapper-scroll-y">
     <h4 style="font-size: 1.5em">Invitaciones Pendientes</h4>
-    <table class="table table-bordered table-striped"  >
-      <thead style="font-size: 1em">
-        <tr>
-          <th>Fecha</th>
-          <th>Evento</th>
-          <th>Lugar</th>
-          <th>Organizador</th>
-          <th id=Acompañante >Acompañantes</th>
-          <th>Acciones</th>
-        </tr>
-      </thead>
-      <tbody  *ngIf="invitacionesPend">
-        <tr *ngFor="let inv of invitacionesPend" valign="middle">
+    <div *ngIf="invitacionesPend.length>0; then tablaInvitaciones else noHayInvitaciones"> </div>
 
-          <td > {{inv.fechaDeInicio}} </td>
-          <td> {{inv.unEventoCerrado}} </td>
-          <td> {{inv.lugarDelEvento}} </td>
-          <td> {{inv.unUsuario}} </td>
-          <td> 
-      <!--    <div>
-            <input  type = "number" style='width: 2.5em; text-align: right'  value={{inv.cantidadDeAcompanantes}}   > 
-            </div>-->
-         <div style="text-align: rigth">
-            <mat-card-content style='width:12em'>
-              <app-contador #cont style='width:12m' valorInicial={{inv.cantidadDeAcompanantes}} > </app-contador>
-            </mat-card-content> 
-            </div >
-          </td>
-          <td>
-            <button id="ConfirmarInvitacion" type="button" title="Confirmar Invitacion"  class="btn btn-ligth" (click)="getAceptarInvitacion(inv.unEventoCerrado, cont.getValor())">  <!--getAceptarInvitacion(inv.unEventoCerrado, cont.getValor())"-->
-              <i class="fa fa-check" style="font-size:1.05em; color:green"></i></button>
-            <button id="RechazarInvitacion" type="button" title="Rechazar Invitacion" class="btn btn-ligth" (click)="getRechazarInvitacion(inv.unEventoCerrado) ">
-              <i class="fa fa-remove" style="font-size:1.05em; color:red"></i>
-            </button>
-          </td>
-        </tr>
+        <ng-template #noHayInvitaciones>
+          <div class="alert alert-danger">
+          "No Hay Invitaciones Pendientes"
+          </div>
+        </ng-template>
+     
         
-      </tbody>
-    </table>
+        
+        <ng-template #tablaInvitaciones>
+          <table class="table table-bordered table-striped">
+            <thead style="font-size: 1em">
+              <tr>
+                <th>Fecha</th>
+                <th>Evento</th>
+                <th>Lugar</th>
+                <th>Organizador</th>
+                <th id=Acompañante>Acompañantes</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody *ngIf="invitacionesPend">
+              <tr *ngFor="let inv of invitacionesPend" valign="middle">
+        
+                <td> {{inv.fechaDeInicio}} </td>
+                <td> {{inv.unEventoCerrado}} </td>
+                <td> {{inv.lugarDelEvento}} </td>
+                <td> {{inv.unUsuario}} </td>
+                <td style='width:12em'>
+                  <!--    <div>
+                    <input  type = "number" style='width: 2.5em; text-align: right'  value={{inv.cantidadDeAcompanantes}}   > 
+                    </div>-->
+                  <div style="text-align: rigth; align-items: center">
+                   <!-- <mat-card-content style='width:12em'>-->
+                      <app-contador #cont style='width:12m' valorInicial={{inv.cantidadDeAcompanantes}}> </app-contador>
+                   <!-- </mat-card-content>-->
+                  </div>
+                </td>
+                <td style="align-items: center" style="text-align: center">
+                  <button id="ConfirmarInvitacion" type="button" title="Confirmar Invitacion" class="btn btn-ligth" (click)="getAceptarInvitacion(inv.unEventoCerrado, cont.getValor())">
+                    <!--getAceptarInvitacion(inv.unEventoCerrado, cont.getValor())"-->
+                    <i class="fa fa-check" style="font-size:1.05em; color:green"></i></button>
+                  <button id="RechazarInvitacion" type="button" title="Rechazar Invitacion" class="btn btn-ligth" (click)="getRechazarInvitacion(inv.unEventoCerrado) ">
+                    <i class="fa fa-remove" style="font-size:1.05em; color:red"></i>
+                  </button>
+                </td>
+              </tr>
+              <!-- <div class="alert alert-danger animate-repeat" *ngFor="let error of contenido.errors">{{error}}</div>-->
+            </tbody>
+          </table>
+        </ng-template>
 
   </div>
-
 </div>

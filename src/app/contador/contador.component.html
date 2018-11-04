@@ -1,16 +1,13 @@
-<mat-card style="width:12em">
+<div style="width:12em; align-content: center">
 
-  <mat-form-field  style="width:4em" class="mat-strouk-fab">
-    <input matInput disabled id="contador" value="{{contador.valor}}">
+  <mat-form-field style="width:4em" class="mat-strouk-fab">
+    <input matInput style="text-align:center"  id="contador" value="{{contador.valor}}"><!--; text-emphasis: yes-->
   </mat-form-field>
-  <button mat-strouk-button color="primary" id="restar" (click)="contador.restar()"  >
+  <button mat-strouk-button #menos color="primary" matTooltip="La cantidad de acompañantes no puede ser negativa, no pude hacerlo condicional"id="restar" (click)="contador.restar()">
     <i class="material-icons">-</i>
   </button>
-
-   <button mat-strouk-button color="primary" id="sumar" (click)="contador.sumar()" >
-    <i class="material-icons">+</i>
+<button mat-strouk-button #mas  matTooltip="Solo hasta la cantidad de Acompañantes invitados, no pude hacerlo condicional"  color="primary" id="sumar" (click)="contador.sumar()">
+    <i class="material-icons"   >+</i>
   </button>
-  
-
-  <!--&nbsp;  [matTooltipPosition]="position.value"-->
-</mat-card>
+  <!--&nbsp;  matTooltip= "No puede llevar más acompañantes"  *ngIf="contador.valorInicial==contador.valor; then matTooltipDisabled=false; else matTooltipDisabled=true"-->
+</div>
