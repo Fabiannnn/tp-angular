@@ -12,11 +12,11 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let e of eventosAbiertos">
+      <tr *ngFor="let e of eventos"> <!-- FP -->
         <td>{{e.fechaDeInicio}}</td>
         <td>{{e.nombre}}</td>
         <td>{{e.locacion}}</td>
-        <td>{{e.ddd}</td>
+        <td>{{e.entradasVendidas()}}</td> <!-- FP -->
         <td>{{e.edadMinima}}</td>
         <td>{{e.precioEntrada}}</td>
       </tr>

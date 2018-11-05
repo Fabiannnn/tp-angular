@@ -8,16 +8,6 @@ export class EventoCerrado extends Evento {
     invitados: Array<Invitacion> = new Array<Invitacion>();
     unaCapacidadMaxima: number;
 
-   /* crearInvitacion(elInvitado: Usuario, unaCantidadDeAcompanantes: number): void {
-        if (this.hayCapacidadDisponible(unaCantidadDeAcompanantes + 1) && this.fechaAnteriorALaLimite()) {
-            let nuevaInvitacion = new Invitacion(this, elInvitado, unaCantidadDeAcompanantes)
-            this.registrarInvitacionEnEvento(nuevaInvitacion)
-            this.registrarInvitacionEnUsuario(nuevaInvitacion, elInvitado)
-        } else {
-            throw "No se puede generar la invitacion"
-        }
-    }*/
-
     hayCapacidadDisponible(unaCantidadTotal: Number): Boolean {
         return unaCantidadTotal <= (this.capacidadMaxima() - this.cantidadAsistentes())
     }
@@ -27,7 +17,7 @@ export class EventoCerrado extends Evento {
     }
 
     registrarInvitacionEnUsuario(nuevaInvitacion: Invitacion, elInvitado: Usuario): void {
-     /*   elInvitado.recibirInvitacion(nuevaInvitacion)*/
+        /*   elInvitado.recibirInvitacion(nuevaInvitacion)*/
     }
 
     cantidadAsistentes(): number {
@@ -52,10 +42,10 @@ export class EventoCerrado extends Evento {
         //this.invitados.filter[invitados | invitados.aceptada != false].forall[invitacion | invitacion.notificacionDeCancelacion()]
     }
 
-   /* postergarElEvento(nuevaFechaHoraInicio: Date): void {
-        super.postergarElEvento(nuevaFechaHoraInicio)
-        //this.invitados.forall[invitacion | invitacion.NotificacionDePostergacion(fechaDeInicio, fechaFinalizacion, fechaLimiteConfirmacion)]
-    }*/
+    /* postergarElEvento(nuevaFechaHoraInicio: Date): void {
+         super.postergarElEvento(nuevaFechaHoraInicio)
+         //this.invitados.forall[invitacion | invitacion.NotificacionDePostergacion(fechaDeInicio, fechaFinalizacion, fechaLimiteConfirmacion)]
+     }*/
 
     esExitoso(): Boolean {
         return !this.cancelado && this.asistenciaExitosa()
@@ -94,21 +84,25 @@ export class EventoCerrado extends Evento {
 
     invitacionesAceptadas(): number {
         let invitacionesAceptadas: number = 0
+        /* FP
         this.invitados.forEach(element => {
             if (element.estadoInvitacion()) {
                 invitacionesAceptadas = invitacionesAceptadas + element.cantidadDeAcompanantes
             }
         });
+        */
         return invitacionesAceptadas
     }
 
     invitacionesRechazadas(): number {
         let invitacionesRechazadas: number = 0
+        /* FP
         this.invitados.forEach(element => {
             if (!element.estadoInvitacion()) {
                 invitacionesRechazadas = invitacionesRechazadas + element.cantidadDeAcompanantes
             }
         });
+        */
         return invitacionesRechazadas
     }
 
@@ -117,8 +111,16 @@ export class EventoCerrado extends Evento {
         this.invitados.push(unaInvitacion)
     }
 
-  //  constructor(unNombre: string, unOrganizador: Usuario, unaLocacion: Locacion, fechaInicio: Date, fechaFinal: Date, fechaLimite: Date, capacidad: number) {
-    //    super(unNombre, unOrganizador, unaLocacion, fechaInicio, fechaFinal, fechaLimite)
-      //  this.unaCapacidadMaxima = capacidad;
-  //  }
+    //FP Creamos el EventoAbierto del Json.
+    static crearEventofromJson(eventoJson) {
+        return new EventoCerrado(eventoJson.nombre, eventoJson.fechaLimiteConfirmacion, eventoJson.fechaDeInicio, eventoJson.locacionNombre, eventoJson.usuarioOrganizador, eventoJson.invitados, eventoJson.capacidadMaxima)
+    }
+
+    //FP
+    constructor(unNombre: string, fechaLimite: Date, fechaInicio: Date, unaLocacion: Locacion, unOrganizador: Usuario, listaInvitado: Array<Invitacion>, laCapacidad: number) {
+        super(unNombre, fechaLimite, fechaInicio, unaLocacion, unOrganizador)
+        this.unaCapacidadMaxima = laCapacidad;
+        this.invitados = listaInvitado;
+        console.log(this)
+    }
 }

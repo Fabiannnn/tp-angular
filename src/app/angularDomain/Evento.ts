@@ -11,26 +11,27 @@ export class Evento {
     fechaFinalizacion: String;
     locacion: String;
     fechaLimiteConfirmacion: String;
-    edadMinima: number;
-    precioEntrada: number;
-    // artistas: Array<String> = [];
+    //FP
+    //edadMinima: number;
+    //precioEntrada: number;
+    //artistas: Array<String> = [];
     cancelado: Boolean;
     postergado: Boolean;
 
-    constructor(nombre?, edadMinima?, precioEntrada?, fechaLimiteConfirmacion?, fechaDeInicio?, locacionNombre?, usuarioOrganizador?) {
+    constructor(nombre?, fechaLimiteConfirmacion?, fechaDeInicio?, locacionNombre?, usuarioOrganizador?) {
         this.nombre = nombre
-        this.edadMinima = edadMinima
-        this.precioEntrada = precioEntrada
+        //FP
+        //this.edadMinima = edadMinima
+        //this.precioEntrada = precioEntrada
         this.fechaLimiteConfirmacion = fechaLimiteConfirmacion
         this.fechaDeInicio = fechaDeInicio
         this.locacion = locacionNombre
         this.organizador = usuarioOrganizador
-
     }
+
     static fromJson(eventoJson) {
-        let eventoAgenda = new Evento(eventoJson.nombre, eventoJson.EdadMinima, eventoJson.precioEntrada,
-            eventoJson.fechaLimiteConfirmacion, eventoJson.fechaDeInicio, eventoJson.locacionNombre, eventoJson.usuarioOrganizador)
-        return eventoAgenda
+        //FP
+        return new Evento(eventoJson.nombre, eventoJson.fechaLimiteConfirmacion, eventoJson.fechaDeInicio, eventoJson.locacionNombre, eventoJson.usuarioOrganizador)
     }
 
     toJSON(): any {
@@ -45,7 +46,6 @@ export class Evento {
         console.log(result)
         return result;
     }
-
 }
 
 /*
