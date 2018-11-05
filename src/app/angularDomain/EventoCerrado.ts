@@ -117,8 +117,8 @@ export class EventoCerrado extends Evento {
         this.invitados.push(unaInvitacion)
     }
 
-  //  constructor(unNombre: string, unOrganizador: Usuario, unaLocacion: Locacion, fechaInicio: Date, fechaFinal: Date, fechaLimite: Date, capacidad: number) {
-    //    super(unNombre, unOrganizador, unaLocacion, fechaInicio, fechaFinal, fechaLimite)
-      //  this.unaCapacidadMaxima = capacidad;
-  //  }
+   constructor(unNombre: string, unOrganizador: Usuario, unaLocacion: Locacion, fechaInicio: Date, fechaFinal: Date, fechaLimite: Date, capacidad: number) {
+      super(unNombre, unOrganizador, unaLocacion, fechaInicio, fechaFinal, fechaLimite)
+    this.unaCapacidadMaxima = capacidad;
+   }
 }

@@ -1,5 +1,15 @@
 <h4>Hoy </h4>
 <br />
+<div *ngIf="eventosHoy.size>0; then tablaEventosHoy else noHayEventos"> </div>
+
+<ng-template #noHayEventos>
+  <div class="alert alert-danger">
+  No Hay Eventos Agendados
+  </div>
+</ng-template>
+
+
+<ng-template #tablaEventosHoy> 
 <div class="container"  *ngFor="let d of eventosHoy" >
   <div class="row">
       <div class="col-sm-3" >
@@ -16,7 +26,9 @@
     </div>
   </div>
 </div>
+</ng-template>
 <br />
+
 <h4>Esta semana</h4>
 <div class="container"  *ngFor="let s of eventosSemana" >
     <div class="row">

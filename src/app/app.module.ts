@@ -19,42 +19,55 @@ import { ContadorComponent } from './contador/contador.component';
 import { HttpModule } from '@angular/http';
 /** Imports de Material */
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatFormFieldModule, MatInputModule, MatCardModule, MatTooltipModule } from '@angular/material';
+import { MatButtonModule, MatFormFieldModule, MatInputModule, MatCardModule } from '@angular/material';
+import{ MatTooltipModule} from '@angular/material/tooltip';
 
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { TimepickerModule } from 'ngx-bootstrap/timepicker';
+import * as moment from 'moment';
+import {defineLocale, esLocale} from 'ngx-bootstrap';
+import { CrearEventoCerradoComponent } from './crear-evento-cerrado/crear-evento-cerrado.component';
+import { FormsModule } from '@angular/forms';
+
+defineLocale('es', esLocale)
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        NavbarComponent,
-        MisEventosComponent,
-        PerfilComponent,
-        AgendaComponent,
-        OrganizadosPorMiComponent,
-        PendientesComponent,
-        SidebarComponent,
-        NotFoundComponent,
-        TablaCerradosComponent,
-        TablaAbiertosComponent,
-        RefreshComponent,
-        ContadorComponent
-    ],
+   declarations: [
+      AppComponent,
+      NavbarComponent,
+      MisEventosComponent,
+      PerfilComponent,
+      AgendaComponent,
+      OrganizadosPorMiComponent,
+      PendientesComponent,
+      SidebarComponent,
+      NotFoundComponent,
+      TablaCerradosComponent,
+      TablaAbiertosComponent,
+      RefreshComponent,
+      ContadorComponent,
+      CrearEventoCerradoComponent
+   ],
+   imports: [
+      BrowserModule,
+      RouterModule.forRoot(routes),
+      HttpModule,
+      MatButtonModule,
+      MatFormFieldModule,
+      MatInputModule,
+      MatCardModule,
+      MatTooltipModule,
+      BrowserAnimationsModule,
+      ModalModule.forRoot(),
+      BsDatepickerModule.forRoot(),
+      TimepickerModule.forRoot(),
+      FormsModule,
 
-
-    imports: [
-        BrowserModule,
-        RouterModule.forRoot(routes),
-        HttpModule,
-        MatButtonModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatCardModule,
-        MatTooltipModule,
-        BrowserAnimationsModule
-    ],
-
-        providers: [],
-        bootstrap: [
-            AppComponent
-        ]
+   ],
+   providers: [],
+   bootstrap: [
+      AppComponent
+   ]
 })
 export class AppModule { }

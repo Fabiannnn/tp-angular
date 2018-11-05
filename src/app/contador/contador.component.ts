@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ContadorDomain } from './contadorDomain';
-
+import{ MatTooltipModule} from '@angular/material/tooltip';
 import { PendientesComponent } from '../pendientes/pendientes.component';
 import {CdkTableModule} from '@angular/cdk/table';
 
@@ -15,15 +15,16 @@ export class ContadorComponent  implements OnInit {
 
   @Input() 
   valorInicial: number
-  contador: ContadorDomain
+  contador2: ContadorDomain
+
 
 
 ngOnInit() {
-  this.contador = new ContadorDomain(this.valorInicial)
+  this.contador2 = new ContadorDomain(this.valorInicial)
 }
 getValor(){
-  console.log("en contador componente this.contador.getValor2().toString()   " + this.contador.getValor2().toString())
-  return this.contador.getValor2().toString()
+  console.log("en contador componente this.contador.getValor2().toString()   " + this.contador2.getValor2().toString())
+  return this.contador2.getValor2().toString()
   
 }
 

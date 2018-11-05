@@ -2,6 +2,7 @@ import { Usuario } from "./Usuario";
 import { Point } from "./Point";
 
 export class Locacion {
+  id:number;
   punto: Point;
   posicionX: number;
   posicionY: number;
@@ -19,7 +20,12 @@ export class Locacion {
 		return this.distancia(usuario.punto) <= usuario.radioDeCercania
   }*/
   
-  constructor(nombreLocacion: String) {
-    this.nombre = nombreLocacion;
+  constructor(id: number, nombre: String) {
+    this.id=id;
+    this.nombre = nombre;
   }
+  static fromJson(locacionJson){
+    let locacion= new Locacion(locacionJson.id, locacionJson.nombre)
+return locacion
+}
 }

@@ -5,14 +5,13 @@
 
         <ng-template #noHayInvitaciones>
           <div class="alert alert-danger">
-          "No Hay Invitaciones Pendientes"
+          No Hay Invitaciones Pendientes
           </div>
         </ng-template>
-     
+       
         
-        
-        <ng-template #tablaInvitaciones>
-          <table class="table table-bordered table-striped">
+        <ng-template #tablaInvitaciones> 
+          <table class="table table-bordered table-striped"  >
             <thead style="font-size: 1em">
               <tr>
                 <th>Fecha</th>
@@ -23,7 +22,7 @@
                 <th>Acciones</th>
               </tr>
             </thead>
-            <tbody *ngIf="invitacionesPend">
+            <tbody >
               <tr *ngFor="let inv of invitacionesPend" valign="middle">
         
                 <td> {{inv.fechaDeInicio}} </td>

@@ -5,6 +5,7 @@ import { ServiceInvitacionesService } from '../services/ServiceInvitaciones.serv
 import { Invitacion } from '../angularDomain/Invitacion';
 import { ContadorComponent } from '../contador/contador.component';
 import { ContadorDomain } from '../contador/contadorDomain';
+import{ MatTooltipModule} from '@angular/material/tooltip';
 
 
 export function mostrarError(component, error) {

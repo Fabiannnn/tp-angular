@@ -1,6 +1,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { ServiceUsuarioService } from '../services/ServiceUsuario.service';
+
 import { subscribeOn } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { Usuario } from '../angularDomain/Usuario';
@@ -19,19 +20,20 @@ export function mostrarError(component, error) {
 export class PerfilComponent implements OnInit {
   usuarioPerfil: any = {};
   errors = [];
-  amigosUsuario:Usuario[];
+  amigosUsuario:Array<Usuario> = new Array<Usuario>();
   eventosAgendaUsuario
-  constructor(private serviceUsuario: ServiceUsuarioService, private router: Router) {
+
+  constructor(private serviceUsuario: ServiceUsuarioService,private router: Router) {
     //, private route:ActivatedRoute
    // this.usuarioPerfil = this.serviceUsuario.usuarioActivo
     //this.router. routeReuseStrategy.shouldReuseRoute=()=>false
   }
+  
 
   ngOnInit() {  
     this.getUsuario()
     this.getAmigosUsuario()
     //  this.getEventosAgenda()
-
   }
 
   getUsuario() {

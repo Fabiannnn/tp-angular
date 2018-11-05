@@ -19,14 +19,20 @@ import { format } from 'util';
   providedIn: 'root'
 })
 export class ServiceEventoService {
+
+  locaciones:Locacion[];
   EVENTOS_CERRADO: Array<EventoCerrado> = new Array<EventoCerrado>();
   EVENTOS_ABIERTO: Array<EventoAbierto> = new Array<EventoAbierto>();
-  eventosAgenda:Evento[];
+  eventosAgenda:Array<Evento> = new Array<Evento>();
+ 
+
  /* eventosAgendaHoy:Evento[];
   eventosAgendaSemana:Evento[];
   eventosAgendaProximos:Evento[];*/
    formatoFecha= "YYYY-MM-DD HH:mm";  
-  idUsuario: String
+  idUsuario: String;
+
+
   constructor(private http: Http) { this.idUsuario = "1" }
 
   private convertToEvento(res: Response) {
@@ -35,6 +41,14 @@ export class ServiceEventoService {
     //aplico la funcion de transformacion a un unico elemento
     return res.json().map(evento =>Evento.fromJson(evento))
    }
+   private convertToLocaciones(res: Response) {
+    //aplico la funcion de transformacion a cada elemento del arreglo
+    //return res.json().map(eventoJson => evento.fromJson(eventoJson))
+    //aplico la funcion de transformacion a un unico elemento
+    return res.json().map(locacion =>Locacion.fromJson(locacion))
+   }
+
+
   agendaUsuario() {
    return  (this.http.get(REST_SERVER_URL + "/agendaUsuario/" + this.idUsuario).pipe(map(this.convertToEvento)));
   }
@@ -53,6 +67,14 @@ export class ServiceEventoService {
    organizadosUsuarioCerrados() {
     return  (this.http.get(REST_SERVER_URL + "/organizadosUsuarioCerrados/" + this.idUsuario).pipe(map(this.convertToEvento)));
    }
+   listadoLocaciones(){
+    return  (this.http.get(REST_SERVER_URL + "/locaciones" ).pipe(map(this.convertToLocaciones)));
+  }
+  crearEventoCerrado(EventoCerrado:String){
+    console.log(this.http.put(REST_SERVER_URL + "/organizarEventoCerrado/" + this.idUsuario, EventoCerrado).subscribe());
+   this.http.put(REST_SERVER_URL + "/organizarEventoCerrado/" + this.idUsuario, EventoCerrado).subscribe();
+   }
+
 }
 /*
   agendaHoy(){
