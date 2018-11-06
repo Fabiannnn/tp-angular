@@ -22,7 +22,7 @@ export function mostrarError(component, error) {
 export class PendientesComponent implements OnInit {
   title = 'MIS INVITACIONES PENDIENTES';
   usuarioPerfil: any = {};
-  invitacionesPend: Invitacion[];
+  invitacionesPend: Array<Invitacion> = new Array<Invitacion>();
   errors = [];
    @Input() 
    valorInicial: number
@@ -54,6 +54,7 @@ export class PendientesComponent implements OnInit {
         //   this.router. routeReuseStrategy.shouldReuseRoute=()=>false
   this.refrescarPantalla()
   }
+  
   getAceptarInvitacion(unEventoCerrado, cantidadDeAcompanantes) {
     const unEventoCerradoYCantidadDeAcompanantes = ('{ "unEventoCerrado": "' + unEventoCerrado + '",  "cantidadDeAcompanantesConfirmados": "' + cantidadDeAcompanantes + '" }');
     console.log(unEventoCerradoYCantidadDeAcompanantes)

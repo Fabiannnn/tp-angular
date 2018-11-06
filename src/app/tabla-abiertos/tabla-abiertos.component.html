@@ -1,26 +1,36 @@
 <div class="container">
   <h5>Eventos Abiertos</h5>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Fecha</th>
-        <th>Evento</th>
-        <th>Lugar</th>
-        <th>Entradas Vendidas</th>
-        <th>Edad Mínima</th>
-        <th>Precio</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let e of eventos">
-        <!-- FP -->
-        <td>{{e.fechaDeInicio}}</td>
-        <td>{{e.nombre}}</td>
-        <td>{{e.locacion}}</td>
-        <td>{{e.entradasVendidas()}}</td> <!-- FP -->
-        <td>{{e.edadMinima}}</td>
-        <td>{{e.precioEntrada}}</td>
-      </tr>
-    </tbody>
-  </table>
+  <div *ngIf="eventos.length > 0; then tablaEventosAbiertos else noHayEventosAbiertos"></div>
+
+  <ng-template #noHayEventosAbiertos>
+    <div class="alert alert-danger">
+      No posee eventos abiertos.
+    </div>
+  </ng-template>
+
+  <ng-template #tablaEventosAbiertos>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Fecha</th>
+          <th>Evento</th>
+          <th>Lugar</th>
+          <th>Entradas Vendidas</th>
+          <th>Edad Mínima</th>
+          <th>Precio</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let e of eventos">
+          <!-- FP -->
+          <td>{{e.fechaDeInicio}}</td>
+          <td>{{e.nombre}}</td>
+          <td>{{e.locacion}}</td>
+          <td>{{e.entradasVendidas()}}</td> <!-- FP -->
+          <td>{{e.edadMinima}}</td>
+          <td>{{e.precioEntrada}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </ng-template>
 </div>

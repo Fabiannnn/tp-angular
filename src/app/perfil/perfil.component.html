@@ -5,7 +5,6 @@
         <li class="nav-item active">
           <a class="nav-link" href="#"><img src="./assets/elnegro.png" class="rounded float-left" alt="Elne"></a>
         </li>
-
         <li class="nav-item">
           <span class="pull-left lead">{{usuarioPerfil.nombreApellido}}</span>
         </li>
@@ -39,7 +38,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let a of usuarioPerfil.amigos ">
+          <tr *ngFor="let a of usuarioPerfil.amigos">
             <td>{{a.nombreApellido}}</td>
             <td>{{a.email}}</td>
             <td>
@@ -50,6 +49,5 @@
         </tbody>
       </table>
     </div>
-
   </div>
 </div>

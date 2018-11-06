@@ -1,7 +1,7 @@
 <div class="col-sm-12">
   <div class="col-sm-12 table-wrapper-scroll-y">
     <h4 style="font-size: 1.5em">Invitaciones Pendientes</h4>
-    <div *ngIf="invitacionesPend.length>0; then tablaInvitaciones else noHayInvitaciones"> </div>
+    <div *ngIf="invitacionesPend.length > 0; then tablaInvitaciones else noHayInvitaciones"></div>
 
         <ng-template #noHayInvitaciones>
           <div class="alert alert-danger">

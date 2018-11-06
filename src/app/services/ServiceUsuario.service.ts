@@ -29,6 +29,7 @@ export class ServiceUsuarioService {
     //aplico la funcion de transformacion a un unico elemento
     return Usuario.fromJson(res.json())
   }
+
   eventosAgendaUsuario() {
     return (this.http.get(REST_SERVER_URL + "/eventosAgendaUsuario/" + this.idUsuario).pipe(map(this.convertToEvento))).pipe()
   }
@@ -38,6 +39,7 @@ export class ServiceUsuarioService {
     //aplico la funcion de transformacion a un unico elemento
     return Evento.fromJson(res.json())
   }
+
   eliminarAmigo(idExAmigo: number) {
     const jsonExAmigo = JSON.parse('{ "idAmigo": ' + String(idExAmigo) + ' }');
 

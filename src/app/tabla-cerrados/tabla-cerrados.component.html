@@ -1,26 +1,36 @@
 <div class="container">
   <h5>Eventos Cerrados</h5>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Fecha</th>
-        <th>Evento</th>
-        <th>Lugar</th>
-        <th>Invitados</th>
-        <th>Confirmados</th>
-        <th>Rechazados</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let e of eventos">
-        <!-- FP -->
-        <td>{{e.fechaDeInicio}}</td>
-        <td>{{e.nombre}}</td>
-        <td>{{e.locacion}}</td>
-        <td>{{e.cantidadDeInvitaciones()}}</td> <!-- FP -->
-        <td>{{e.invitacionesAceptadas()}}</td> <!-- FP -->
-        <td>{{e.invitacionesRechazadas()}}</td> <!-- FP -->
-      </tr>
-    </tbody>
-  </table>
+  <div *ngIf="eventos.length > 0; then tablaEventosCerrados else noHayEventosCerrados"></div>
+
+  <ng-template #noHayEventosCerrados>
+    <div class="alert alert-danger">
+      No posee eventos cerrados.
+    </div>
+  </ng-template>
+
+  <ng-template #tablaEventosCerrados>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Fecha</th>
+          <th>Evento</th>
+          <th>Lugar</th>
+          <th>Invitados</th>
+          <th>Confirmados</th>
+          <th>Rechazados</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let e of eventos">
+          <!-- FP -->
+          <td>{{e.fechaDeInicio}}</td>
+          <td>{{e.nombre}}</td>
+          <td>{{e.locacion}}</td>
+          <td>{{e.cantidadDeInvitaciones()}}</td> <!-- FP -->
+          <td>{{e.invitacionesAceptadas()}}</td> <!-- FP -->
+          <td>{{e.invitacionesRechazadas()}}</td> <!-- FP -->
+        </tr>
+      </tbody>
+    </table>
+  </ng-template>
 </div>

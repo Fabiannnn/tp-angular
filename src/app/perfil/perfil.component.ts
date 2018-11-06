@@ -5,6 +5,7 @@ import { ServiceUsuarioService } from '../services/ServiceUsuario.service';
 import { subscribeOn } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { Usuario } from '../angularDomain/Usuario';
+import { ArrayType } from '@angular/compiler';
 //ActivatedRoute,
 export function mostrarError(component, error) {
   component.errors.push(error._body)
@@ -21,7 +22,7 @@ export class PerfilComponent implements OnInit {
   usuarioPerfil: any = {};
   errors = [];
   amigosUsuario: Array<Usuario> = new Array<Usuario>();
-  eventosAgendaUsuario
+  eventosAgendaUsuario;
 
   constructor(private serviceUsuario: ServiceUsuarioService, private router: Router) {
     //, private route:ActivatedRoute
@@ -45,7 +46,7 @@ export class PerfilComponent implements OnInit {
       }
     )
   }
-
+  /*
   getEventosAgenda() {
     this.serviceUsuario.eventosAgendaUsuario().subscribe(
       data => { this.usuarioPerfil.eventosAgenda = data },
@@ -55,7 +56,7 @@ export class PerfilComponent implements OnInit {
       }
     )
   }
-
+  */
   getAmigosUsuario() {
     this.serviceUsuario.amigosUsuario().subscribe(
       data => { this.usuarioPerfil.amigos = data },
@@ -84,8 +85,6 @@ export class PerfilComponent implements OnInit {
   }
 
 }
-
-
 
 /*Datos del usuario: Foto, nombre y apellido, username, tipo de usuario, email y cantidad de amigos.
 Amigos: Listado de amigos del usuario. De cada amigo queremos ver su nombre y apellido y username. Además, desde el mismo listado, se podrá eliminar amigos.

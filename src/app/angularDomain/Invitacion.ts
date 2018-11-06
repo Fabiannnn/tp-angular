@@ -8,15 +8,15 @@ export class Invitacion {
 	lugarDelEvento: String
 
 	static fromJson(invitacionJson) {
-		let invitacion = new Invitacion(
+		return new Invitacion(
 			invitacionJson.cantidadDeAcompanantes,
 			invitacionJson.aceptada,
 			invitacionJson.cantidadDeAcompanantesConfirmados,
-			invitacionJson.fechaDeInicio,
+			invitacionJson.unEventoCerrado,
 			invitacionJson.unUsuario,
 			invitacionJson.lugarDelEvento,
-			invitacionJson.unEventoCerrado)
-		return invitacion
+			invitacionJson.fechaDeInicio
+			)
 	}
 	//FP Modifique el orden en el constructor.
 	constructor(cantidadDeAcompanantes?: number, aceptada?: Boolean, cantidadDeAcompanantesConfirmados?: number, elEventoCerrado?: String, elUsuario?: String, lugarDelEvento?: String, fechaDeInicio?: String) {
