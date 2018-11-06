@@ -4,60 +4,60 @@
 
 <ng-template #noHayEventos>
   <div class="alert alert-danger">
-  No Hay Eventos Agendados
+    No Hay Eventos Agendados
   </div>
 </ng-template>
 
 
-<ng-template #tablaEventosHoy> 
-<div class="container"  *ngFor="let d of eventosHoy" >
-  <div class="row">
-      <div class="col-sm-3" >
-      {{d.fechaDeInicio}}
-    </div>  
-    <div class="col-sm-3">
-      {{ d.nombre}}
-    </div>
-    <div class="col-sm-3" >
-      {{d.locacion}}
-    </div>
-    <div class="col-sm-3">
-      {{ d.organizador}}
+<ng-template #tablaEventosHoy>
+  <div class="container" *ngFor="let d of eventosHoy">
+    <div class="row">
+      <div class="col-sm-3">
+        {{d.fechaDeInicio}}
+      </div>
+      <div class="col-sm-3">
+        {{ d.nombre}}
+      </div>
+      <div class="col-sm-3">
+        {{d.locacion}}
+      </div>
+      <div class="col-sm-3">
+        {{ d.organizador}}
+      </div>
     </div>
   </div>
-</div>
 </ng-template>
 <br />
 
 <h4>Esta semana</h4>
-<div class="container"  *ngFor="let s of eventosSemana" >
-    <div class="row">
-        <div class="col-sm-3" >
-        {{s.fechaDeInicio}}
-      </div>  
-      <div class="col-sm-3">
-        {{ s.nombre}}
-      </div>
-      <div class="col-sm-3" >
-        {{s.locacion}}
-      </div>
-      <div class="col-sm-3">
-        {{ s.organizador}}
-      </div>
+<div class="container" *ngFor="let s of eventosSemana">
+  <div class="row">
+    <div class="col-sm-3">
+      {{s.fechaDeInicio}}
+    </div>
+    <div class="col-sm-3">
+      {{ s.nombre}}
+    </div>
+    <div class="col-sm-3">
+      {{s.locacion}}
+    </div>
+    <div class="col-sm-3">
+      {{ s.organizador}}
     </div>
   </div>
+</div>
 <br />
 <h4>Próximos Eventos</h4>
 <div class="container" *ngFor="let p of eventosProximos">
 
   <div class="row">
-      <div class="col-sm-3" >
+    <div class="col-sm-3">
       {{p.fechaDeInicio}}
-    </div>  
+    </div>
     <div class="col-sm-3">
       {{ p.nombre}}
     </div>
-    <div class="col-sm-3" >
+    <div class="col-sm-3">
       {{p.locacion}}
     </div>
     <div class="col-sm-3">

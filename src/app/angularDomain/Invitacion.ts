@@ -1,6 +1,3 @@
-import { EventoCerrado } from "./EventoCerrado";
-import { Usuario } from "./Usuario";
-
 export class Invitacion {
 	unEventoCerrado: String
 	unUsuario: String
@@ -8,7 +5,7 @@ export class Invitacion {
 	aceptada: Boolean
 	fechaDeInicio: String
 	cantidadDeAcompanantesConfirmados: number = 0
-	lugarDelEvento:String
+	lugarDelEvento: String
 
 	static fromJson(invitacionJson) {
 		let invitacion = new Invitacion(
@@ -19,19 +16,17 @@ export class Invitacion {
 			invitacionJson.unUsuario,
 			invitacionJson.lugarDelEvento,
 			invitacionJson.unEventoCerrado)
-
 		return invitacion
 	}
-
-	constructor(cantidadDeAcompanantes?: number, aceptada?: Boolean, cantidadDeAcompanantesConfirmados?: number, fechaDeInicio?: String, elUsuario?: String, lugarDelEvento?:String, elEventoCerrado?: String) {
+	//FP Modifique el orden en el constructor.
+	constructor(cantidadDeAcompanantes?: number, aceptada?: Boolean, cantidadDeAcompanantesConfirmados?: number, elEventoCerrado?: String, elUsuario?: String, lugarDelEvento?: String, fechaDeInicio?: String) {
 		this.cantidadDeAcompanantes = cantidadDeAcompanantes
 		this.aceptada = aceptada
 		this.cantidadDeAcompanantesConfirmados = cantidadDeAcompanantesConfirmados
-		this.fechaDeInicio = fechaDeInicio
-		this.unUsuario = elUsuario
-		this.lugarDelEvento=lugarDelEvento
 		this.unEventoCerrado = elEventoCerrado
-
+		this.unUsuario = elUsuario
+		this.lugarDelEvento = lugarDelEvento
+		this.fechaDeInicio = fechaDeInicio
 	}
 
 	estadoInvitacion(): Boolean {
@@ -41,8 +36,6 @@ export class Invitacion {
 	nombreEvento() {
 		return this.unEventoCerrado
 	}
-
-
 }
 /*	estaAceptada(): void {
 		this.aceptada = true

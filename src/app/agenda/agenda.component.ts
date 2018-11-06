@@ -40,10 +40,10 @@ export class AgendaComponent implements OnInit {
     this.getEventosAgenda()
     this.getEventosHoy()
     this.getEventosSemana()
-    this.getEventosProximos() 
-   }
+    this.getEventosProximos()
+  }
 
-  getEventosAgenda(){
+  getEventosAgenda() {
     this.serviceEvento.agendaUsuario().subscribe(
       data => { this.eventosAgenda = data },
       error => {
@@ -51,7 +51,7 @@ export class AgendaComponent implements OnInit {
         this.errors.push(error._body)
       }
     )
-     
+
   }
   getEventosHoy() {
     this.serviceEvento.agendaHoy().subscribe(

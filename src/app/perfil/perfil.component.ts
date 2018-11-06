@@ -20,17 +20,17 @@ export function mostrarError(component, error) {
 export class PerfilComponent implements OnInit {
   usuarioPerfil: any = {};
   errors = [];
-  amigosUsuario:Array<Usuario> = new Array<Usuario>();
+  amigosUsuario: Array<Usuario> = new Array<Usuario>();
   eventosAgendaUsuario
 
-  constructor(private serviceUsuario: ServiceUsuarioService,private router: Router) {
+  constructor(private serviceUsuario: ServiceUsuarioService, private router: Router) {
     //, private route:ActivatedRoute
-   // this.usuarioPerfil = this.serviceUsuario.usuarioActivo
+    // this.usuarioPerfil = this.serviceUsuario.usuarioActivo
     //this.router. routeReuseStrategy.shouldReuseRoute=()=>false
   }
-  
 
-  ngOnInit() {  
+
+  ngOnInit() {
     this.getUsuario()
     this.getAmigosUsuario()
     //  this.getEventosAgenda()
@@ -70,18 +70,18 @@ export class PerfilComponent implements OnInit {
     this.serviceUsuario.eliminarAmigo(idAmigo)
     //   this.router. routeReuseStrategy.shouldReuseRoute=()=>false
     this.refrescarPantalla()
-   //this.reload()
+    //this.reload()
   }
 
-  refrescarPantalla(){
-  this.router.navigateByUrl('/refresh', { skipLocationChange: true }).then(() =>
-  this.router.navigate(["/perfil"]));
-  } 
-  reload(){
+  refrescarPantalla() {
+    this.router.navigateByUrl('/refresh', { skipLocationChange: true }).then(() =>
+      this.router.navigate(["/perfil"]));
+  }
+  reload() {
     // Here is the other part of the trick
     this.router.navigated = false;
     this.router.navigate([this.router.url]);
-}
+  }
 
 }
 

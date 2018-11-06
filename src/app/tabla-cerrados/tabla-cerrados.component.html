@@ -1,7 +1,7 @@
 <div class="container">
   <h5>Eventos Cerrados</h5>
   <table class="table">
-    <thead >
+    <thead>
       <tr>
         <th>Fecha</th>
         <th>Evento</th>
@@ -12,13 +12,14 @@
       </tr>
     </thead>
     <tbody>
-      <tr   *ngFor="let e of eventosCerrados">
+      <tr *ngFor="let e of eventos">
+        <!-- FP -->
         <td>{{e.fechaDeInicio}}</td>
         <td>{{e.nombre}}</td>
         <td>{{e.locacion}}</td>
-        <td>{{e.cantidad</td>
-        <td>{{e.invitaci</td>
-        <td>{{e.invitaci</td>
+        <td>{{e.cantidadDeInvitaciones()}}</td> <!-- FP -->
+        <td>{{e.invitacionesAceptadas()}}</td> <!-- FP -->
+        <td>{{e.invitacionesRechazadas()}}</td> <!-- FP -->
       </tr>
     </tbody>
   </table>

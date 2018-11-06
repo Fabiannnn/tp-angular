@@ -13,15 +13,15 @@ import { REST_SERVER_URL } from './configuration';
 export class ServiceUsuarioService {
   idUsuario: String
   amigos: Array<Usuario> = new Array<Usuario>();
-  eventosAgenda:Array<Evento>= new Array<Evento>();
+  eventosAgenda: Array<Evento> = new Array<Evento>();
 
-  constructor(private http: Http){  this.idUsuario="1"}
+  constructor(private http: Http) { this.idUsuario = "1" }
 
   usuarioActivo() {
-    return this.http.get(REST_SERVER_URL + "/usuarioPerfil/"+this.idUsuario).pipe(map(this.convertToUsuario))
+    return this.http.get(REST_SERVER_URL + "/usuarioPerfil/" + this.idUsuario).pipe(map(this.convertToUsuario))
   }
   amigosUsuario() {
-    return (this.http.get(REST_SERVER_URL + "/amigosUsuario/"+this.idUsuario).pipe(map(this.convertToUsuario)))//.pipe()
+    return (this.http.get(REST_SERVER_URL + "/amigosUsuario/" + this.idUsuario).pipe(map(this.convertToUsuario)))//.pipe()
   }
   private convertToUsuario(res: Response) {
     //aplico la funcion de transformacion a cada elemento del arreglo
@@ -30,7 +30,7 @@ export class ServiceUsuarioService {
     return Usuario.fromJson(res.json())
   }
   eventosAgendaUsuario() {
-    return (this.http.get(REST_SERVER_URL + "/eventosAgendaUsuario/"+this.idUsuario).pipe(map(this.convertToEvento))).pipe()
+    return (this.http.get(REST_SERVER_URL + "/eventosAgendaUsuario/" + this.idUsuario).pipe(map(this.convertToEvento))).pipe()
   }
   private convertToEvento(res: Response) {
     //aplico la funcion de transformacion a cada elemento del arreglo
@@ -39,7 +39,7 @@ export class ServiceUsuarioService {
     return Evento.fromJson(res.json())
   }
   eliminarAmigo(idExAmigo: number) {
-   const jsonExAmigo = JSON.parse('{ "idAmigo": ' + String(idExAmigo) + ' }');
+    const jsonExAmigo = JSON.parse('{ "idAmigo": ' + String(idExAmigo) + ' }');
 
     this.http.put(REST_SERVER_URL + "/eliminarAmigo/" + this.idUsuario, jsonExAmigo).subscribe()
   }
