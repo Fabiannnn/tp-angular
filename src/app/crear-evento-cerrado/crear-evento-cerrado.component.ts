@@ -3,7 +3,7 @@ import { ServiceEventoService } from '../services/ServiceEvento.service';
 import { FormsModule } from '@angular/forms';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
-import {BsDatepickerConfig, BsLocaleService} from 'ngx-bootstrap/datepicker';
+import { BsDatepickerConfig, BsLocaleService } from 'ngx-bootstrap/datepicker';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { TimepickerModule } from 'ngx-bootstrap/timepicker';
@@ -12,7 +12,7 @@ import { defineLocale, esLocale } from 'ngx-bootstrap';
 defineLocale('es', esLocale);
 import { HostListener, ViewChild } from '@angular/core';
 import { BsDatepickerDirective } from 'ngx-bootstrap/datepicker';
-import {Locacion } from '../angularDomain/Locacion';
+import { Locacion } from '../angularDomain/Locacion';
 import { Router } from '@angular/router';
 import { EventoCerrado } from '../angularDomain/EventoCerrado';
 
@@ -24,31 +24,40 @@ import { EventoCerrado } from '../angularDomain/EventoCerrado';
 
 export class CrearEventoCerradoComponent {
 
-  ngOnInit() {  
+  ngOnInit() {
     this.getLocaciones()
-  
+
   }
-  locaciones:Array<Locacion>= new Array<Locacion>();
+  locaciones: Array<Locacion> = new Array<Locacion>();
   errors = [];
   modalRef: BsModalRef;
-  jsonEvento:String;
-  nuevoEventoCerrado:EventoCerrado;
+  jsonEvento: String;
+  //nuevoEventoCerrado: EventoCerrado;
+  //FP
+  usuarioOrganizador: number = 1;
+  nombreDelEvento: String;
+  laLocacion: String;
+  fechaInicioEventoCerrado: any;
+  fechaFinEventoCerrado: any;
+  fechaLimiteEvento: any;
+  cantMaximaInvitados: number;
+
   fecha = new Date()
+  actual = moment(this.fecha)
+  resto = 15 - (this.actual.minute() % 15)
+  hora: Date = moment(this.actual).add(this.resto, "minutes").toDate()
+  horaInicioEventoCerrado = this.hora;
+  horaFinEventoCerrado = this.hora;
+
 
   minDate: Date;
 
-  datePickerConfig:Partial<BsDatepickerConfig>
-  
+  datePickerConfig: Partial<BsDatepickerConfig>
+
   list: any[] = [];
 
   hstep = 1;
   mstep = 15;
-
-  actual = moment(this.fecha)
-  resto = 15 - (this.actual.minute() % 15)
-  hora: Date = moment(this.actual).add(this.resto, "minutes").toDate()
-  horaInicioEventoCerrado = this.hora
-  horaFinEventoCerrado = this.hora
 
   cFechaInicio_val
   cFechaInicio(value: Date): void {
@@ -83,15 +92,15 @@ export class CrearEventoCerradoComponent {
   locale = 'es'
 
 
-  constructor( private router: Router, private modalService: BsModalService, private localeService: BsLocaleService,  private serviceEvento: ServiceEventoService) {
-   
+  constructor(private router: Router, private modalService: BsModalService, private localeService: BsLocaleService, private serviceEvento: ServiceEventoService) {
+
     this.localeService.use(this.locale);
 
     this.datePickerConfig = Object.assign({},
-      {containerClass:'theme-dark-blue'},
-      {dateInputFormat: 'DD/MM/YYYY'},
-      {showWeekNumbers: false}
-      );
+      { containerClass: 'theme-dark-blue' },
+      { dateInputFormat: 'DD/MM/YYYY' },
+      { showWeekNumbers: false }
+    );
 
     this.minDate = new Date();
     this.minDate.setDate(this.minDate.getDate());
@@ -112,12 +121,40 @@ export class CrearEventoCerradoComponent {
 
   }
 
-  generarEvento() {
-   // this.nuevoEventoCerrado= new EventoCerrado(this.nombreEventoCerrado, )
-    this.serviceEvento.crearEventoCerrado(this.jsonEvento);
-    this.router.navigateByUrl('./misEventos/organizados-por-mi');
+  refrescarPantalla() {
+    this.router.navigateByUrl('/refresh', { skipLocationChange: true }).then(() =>
+      this.router.navigate(["/misEventos/organizados-por-mi"]));
   }
 
+  getGenerarEvento() {
+    // this.nuevoEventoCerrado= new EventoCerrado(this.nombreEventoCerrado, )
+    //nuevoEventoCerrado: EventoCerrado = new EventoCerrado(nombreEventoCerrado, )
+    console.log(this.usuarioOrganizador)
+    console.log(this.nombreDelEvento);
+    console.log(this.laLocacion);
+    console.log(this.fechaInicioEventoCerrado);
+    console.log(this.fechaFinEventoCerrado);
+    console.log(this.fechaLimiteEvento);
+    console.log(this.cantMaximaInvitados);
+    console.log(this.horaInicioEventoCerrado);
+    console.log(this.horaFinEventoCerrado);
+    let fechaLimite = moment(this.fechaLimiteEvento).format('DD/MM/YYYY');
+    console.log(this.fechaLimiteEvento);
+    let fechaInicio = moment(this.fechaInicioEventoCerrado).format('DD/MM/YYYY');
+    let horaInicio = moment(this.horaInicioEventoCerrado).format('HH:mm');
+    let fechaInicioFinal = fechaInicio + " " + horaInicio;
+    console.log(this.fechaInicioEventoCerrado);
+    let fechaFin = moment(this.fechaFinEventoCerrado).format('DD/MM/YYYY');
+    let horaFin = moment(this.horaFinEventoCerrado).format('HH:mm');
+    let fechaFinFinal = fechaFin + " " + horaFin;
+    let nombre = "Felipe no se"
+    const prueba = ('{ "nombre": "' + this.nombreDelEvento + '",  "capacidadMaxima": ' + this.cantMaximaInvitados + ', "fechaLimiteConfirmacion": "' + fechaLimite + '", "fechaDeInicio": "' + fechaInicioFinal + '", "fechaFinalizacion": "' + fechaFinFinal + '", "locacionNombre": "' + this.laLocacion + '" }');
+    console.log(prueba)
+    this.serviceEvento.crearEventoCerrado(prueba);
+    //this.router.navigateByUrl('./misEventos/organizados-por-mi');
+    this.refrescarPantalla();
   }
+
+}
 
 

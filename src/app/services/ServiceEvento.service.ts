@@ -91,8 +91,9 @@ export class ServiceEventoService {
     return (this.http.get(REST_SERVER_URL + "/locaciones").pipe(map(this.convertToLocaciones)));
   }
   crearEventoCerrado(EventoCerrado: String) {
-    console.log(this.http.put(REST_SERVER_URL + "/organizarEventoCerrado/" + this.idUsuario, EventoCerrado).subscribe());
-    this.http.put(REST_SERVER_URL + "/organizarEventoCerrado/" + this.idUsuario, EventoCerrado).subscribe();
+    //console.log(EventoCerrado);
+    //console.log(this.http.put(REST_SERVER_URL + "/organizarEventoCerrado/" + this.idUsuario, EventoCerrado).subscribe());
+    this.http.post(REST_SERVER_URL + "/organizarEventoCerrado/" + this.idUsuario, EventoCerrado).subscribe();
   }
 
 }
