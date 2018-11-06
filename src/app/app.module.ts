@@ -29,6 +29,8 @@ import * as moment from 'moment';
 import {defineLocale, esLocale} from 'ngx-bootstrap';
 import { CrearEventoCerradoComponent } from './crear-evento-cerrado/crear-evento-cerrado.component';
 import { FormsModule } from '@angular/forms';
+import { CrearEventoAbiertoComponent } from './crear-evento-abierto/crear-evento-abierto.component';
+import { Agenda2Component } from './agenda2/agenda2.component';
 
 defineLocale('es', esLocale)
 
@@ -47,7 +49,9 @@ defineLocale('es', esLocale)
       TablaAbiertosComponent,
       RefreshComponent,
       ContadorComponent,
-      CrearEventoCerradoComponent
+      CrearEventoCerradoComponent,
+      CrearEventoAbiertoComponent,
+      Agenda2Component
    ],
    imports: [
       BrowserModule,
@@ -62,8 +66,7 @@ defineLocale('es', esLocale)
       ModalModule.forRoot(),
       BsDatepickerModule.forRoot(),
       TimepickerModule.forRoot(),
-      FormsModule,
-
+      FormsModule
    ],
    providers: [],
    bootstrap: [

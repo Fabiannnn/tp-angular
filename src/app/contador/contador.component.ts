@@ -27,5 +27,7 @@ getValor(){
   return this.contador2.getValor2().toString()
   
 }
-
+getLeyendaMas(){
+  return this.contador2.getLeyendaMas()
+}
 }

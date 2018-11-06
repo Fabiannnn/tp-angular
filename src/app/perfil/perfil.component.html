@@ -29,25 +29,36 @@
     <div class="col-sm-9 table-wrapper-scroll-y">
       <h3>Amigos</h3>
       <br />
-      <table class="table table-bordered table-striped">
-        <thead>
-          <tr>
-            <th>Nombre</th>
-            <th>Email</th>
-            <th>Eliminar</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let a of usuarioPerfil.amigos">
-            <td>{{a.nombreApellido}}</td>
-            <td>{{a.email}}</td>
-            <td>
-              <button id="eliminarAmigo" type="button" title="Eliminar Amigo" class="btn btn-ligth" (click)="eliminarAmigo(a.id)">
-                <i class="fa fa-remove" style="font-size:1.05em; color:red"></i>
-              </button>
-            </td>
-        </tbody>
-      </table>
+ <!--     <div *ngIf="usuarioPerfil.amigos.length>0; then tablaAmigoselse noHayAmigos "> </div>
+
+      <ng-template #noHayAmigos>
+        <div class="alert alert-danger">
+          El usuario es ermitaño
+        </div>
+      </ng-template>
+
+
+      <ng-template #tablaAmigos>-->
+        <table class="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Email</th>
+              <th>Eliminar</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let a of usuarioPerfil.amigos">
+              <td>{{a.nombreApellido}}</td>
+              <td>{{a.email}}</td>
+              <td>
+                <button id="eliminarAmigo" type="button" title="Eliminar Amigo" class="btn btn-ligth" (click)="eliminarAmigo(a.id)">
+                  <i class="fa fa-remove" style="font-size:1.05em; color:red"></i>
+                </button>
+              </td>
+          </tbody>
+        </table>
+    <!--  </ng-template>-->
     </div>
   </div>
 </div>

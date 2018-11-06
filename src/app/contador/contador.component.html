@@ -3,10 +3,10 @@
   <mat-form-field style="width:4em" class="mat-strouk-fab">
     <input matInput style="text-align:center"  id="contador" value="{{contador2.valor}}"><!--; text-emphasis: yes-->
   </mat-form-field>
-  <button mat-strouk-button  #menos color="primary" matTooltip="La cantidad de acompañantes no puede ser negativa, no pude hacerlo condicional"id="restar" (click)="contador2.restar()">
+  <button mat-strouk-button  #menos color="primary" matTooltip={{contador2.getLeyendaMenos()}}  id="restar" (click)="contador2.restar()">
     <i class="material-icons">-</i>
   </button>
-<button mat-strouk-button  #mas   color="primary" id="sumar" (click)="contador2.sumar()">
+<button mat-strouk-button  #mas   color="primary"  matTooltip={{contador2.getLeyendaMas()}}  id="sumar" (click)="contador2.sumar()">
     <i class= "material-icons">
      <span  matTooltip="return truecontador2.valor<contador2.valorInicial" 
   ></span>

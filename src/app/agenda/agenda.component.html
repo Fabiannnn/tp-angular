@@ -1,10 +1,10 @@
 <h4>Hoy </h4>
 <br />
-<div *ngIf="eventosHoy.size>0; then tablaEventosHoy else noHayEventos"> </div>
+<div *ngIf="eventosHoy.length>0; then tablaEventosHoy else noHayEventos"> </div>
 
 <ng-template #noHayEventos>
   <div class="alert alert-danger">
-    No Hay Eventos Agendados
+    No Hay Eventos Agendados Para Hoy
   </div>
 </ng-template>
 
@@ -30,6 +30,15 @@
 <br />
 
 <h4>Esta semana</h4>
+<div *ngIf="eventosSemana.length>0; then tablaEventosSemana else noHayEventosSemana"> </div>
+
+<ng-template #noHayEventosSemana>
+  <div class="alert alert-danger">
+    No Hay Eventos  Agendados para la Proxima Semana
+  </div>
+</ng-template>
+
+<ng-template #tablaEventosSemana>
 <div class="container" *ngFor="let s of eventosSemana">
   <div class="row">
     <div class="col-sm-3">
@@ -46,11 +55,20 @@
     </div>
   </div>
 </div>
+</ng-template>
 <br />
 <h4>Próximos Eventos</h4>
-<div class="container" *ngFor="let p of eventosProximos">
+<div *ngIf="eventosProximos.length>0; then tablaEventosProximos else noHayEventosProximos"> </div>
 
-  <div class="row">
+<ng-template #noHayEventosProximos>
+  <div class="alert alert-danger">
+    No Hay Eventos Proximos Agendados
+  </div>
+</ng-template>
+
+
+<ng-template #tablaEventosProximos>
+<div class="container" *ngFor="let p of eventosProximos">  <div class="row">
     <div class="col-sm-3">
       {{p.fechaDeInicio}}
     </div>
@@ -65,3 +83,4 @@
     </div>
   </div>
 </div>
+</ng-template>
