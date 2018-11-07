@@ -9,10 +9,9 @@ import { NgModule } from '@angular/core'
 
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'misEventos/agenda', pathMatch: 'full' },
+  { path: '', redirectTo: 'misEventos', pathMatch: 'full' },
   { path: 'perfil', component: PerfilComponent },
   { path: 'refresh', component: RefreshComponent },
-
   {
     path: 'misEventos', component: MisEventosComponent,
     children: [
@@ -20,10 +19,10 @@ export const routes: Routes = [
       { path: 'agenda', component: AgendaComponent },
       { path: 'organizados-por-mi', component: OrganizadosPorMiComponent },
       { path: 'pendientes', component: PendientesComponent },
-      { path: '', component: AgendaComponent },
-      { path: 'refresh', component: RefreshComponent }
+      { path: 'refresh', component: RefreshComponent },
     ]
-  }
+  },
+  
 ]
 
 @NgModule({

@@ -1,231 +1,225 @@
-<button type="button" class="btn btn-primary" (click)="openModal(template)">
-  Crear Evento Abierto
-</button>
-
-<ng-template #template>
-
-  <div class="modal-header">
-    <h4 class="modal-title pull-left">Crear Evento Abierto</h4>
-    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-
-  <form (ngSubmit)="onSubmit()" #formulario="ngForm">
-    <div class="modal-body">
-      <div class="container">
-        <div class="row">
-          <!-- inicio row 1 -->
-          <div class="col">
-            <!-- inicio row 1 col 1 -->
-
-            <div class="form-group">
-              <label for="nombre">Nombre:</label>
-              <input 
-              type="text" 
-              class="form-control" 
-              id="nombre" 
-              name="nombre" 
-              [(ngModel)]="model.nombre" 
-              required  
-              placeholder="Nombre evento">
-
-              <!--<div class="alert alert-danger" *ngIf="nombre.touched && !nombre.valid">
-                Por favor complete el nombre del evento
-              </div>-->
-            </div><!-- form-group nombre evento cerrado -->
-
-
-
-          </div><!-- fin row 1 col 1-->
-
-          <div class="col">
-
-            <!-- inicio row 1 col 2 -->
-            <div class="form-group">
-
-              <label for="locacion">Locación:</label><br>
-              <select 
-              name="locacion" 
-              for="locacion" 
-              class="form-control" 
-              [(ngModel)]="model.locacion" 
-              required>
-                <option value="">Seleccione un valor</option>
-                <option *ngFor="let l of locaciones" [value]="l.nombre">{{ l.nombre }}</option>
-              </select>
-              <!--<div class="alert alert-danger" *ngIf="locacion.touched && !locacion.valid">
-                Por favor elija una locacion para el evento
-              </div>-->
-            </div><!-- form-group nombre evento abierto -->
-          </div><!-- fin row 1 col 2-->
-        </div><!-- fin row 1 -->
-
-        <div class="row">
-          <!-- inicio row 2 -->
-          <div class="col">
-            <!-- inicio row 2 col 1 -->
-            <div class="form-group">
-              <!-- form-group fecha inicio evento abierto -->
-              <label for="fechaInicio">Inicio:</label>
-
-              <input 
-              required 
-              name="fechaInicio" 
-              id="fechaInicio" 
-              [(ngModel)]="model.fechaInicio" 
-              class="form-control" 
-              bsDatepicker 
-              [minDate]="fechaDelDia"
-              [bsConfig]="datePickerConfig"
-              (bsValueChange)="cFechaInicio($event)" 
-              style="width: 117px;">
-
-              <div class="alert alert-danger" *ngIf="(fechaInicio == null) && (fechaInicio != null)">
-                Por favor complete la fecha de inicio
-              </div>
-              <div class="alert alert-danger" *ngIf="(fechaLimite != null) && (fechaInicio == null) && (fechaFin != null)">
-                Por favor complete la fecha de inicio
-              </div>
-
-              <timepicker 
-              required 
-              name="horaInicio" 
-              [(ngModel)]="model.horaInicio" 
-              [showSpinners]="false"
-              [hourStep]="hstep" 
-              [minuteStep]="mstep" 
-              [showMeridian]="isMeridian" 
-              (ngModelChange)="cHoraInicio($event)">
-              </timepicker>
-
-            </div><!-- form-group fecha inicio evento abierto -->
-          </div><!-- fin row 2 col 1 -->
-
-          <div class="col">
-            <!-- inicio row 2 col 2 -->
-            <div class="form-group">
-              <!-- form-group fecha fin evento abierto -->
-              <label for="fechaFin">Fin:</label>
-
-              <input 
-              required 
-              name="fechaFin" 
-              [(ngModel)]="model.fechaFin" 
-              class="form-control" 
-              bsDatepicker
-              [minDate]="fechaInicio"
-              [bsConfig]="datePickerConfig" 
-              (bsValueChange)="cFechaFin($event)"
-              style="width: 117px;" 
-              [isDisabled]="(fechaInicio == null)">
-
-              <div class="alert alert-danger" *ngIf="(fechaInicio == null) && (fechaFin != null)">
-                Por favor complete la fecha de inicio
-              </div>
-              <div class="alert alert-danger" *ngIf="(fechaInicio != null) && (fechaFin != null) && (fechaInicio != null) && (fechaFin == null)">
-                Por favor complete la fecha de inicio
-              </div>
-              <div class="alert alert-danger" *ngIf="fechaInicio > fechaFin">
-                La fecha de fin debe ser igual o posterior que la fecha de inicio
-              </div>
-
-              <timepicker 
-              required 
-              name="horaFin" 
-              [(ngModel)]="model.horaFin" 
-              [showSpinners]="false"
-              [hourStep]="hstep" 
-              [minuteStep]="mstep" 
-              [showMeridian]="isMeridian" 
-              (ngModelChange)="cHoraFin($event)">
-              </timepicker>
-
-              <div class="alert alert-danger" *ngIf="(fechaInicio != null) && (fechaFin != null) && (cFechaInicio_val == cfechafin_val) && (chorainicio_val == chorafin_val)">
-                Las fechas de inicio y fin pueden coincidir, pero los horarios no
-                <!--La fecha y hora de fin no pueden coincidir con la fecha y hora de inicio-->
-              </div>
-
-              <div class="alert alert-danger" *ngIf="(fechaInicio != null) && (fechaFin != null) && (cFechaInicio_val == cfechafin_val) && (chorainicio_val > chorafin_val)">
-                El horario de fin debe ser posterior al horario de inicio
-              </div>
-
-            </div><!-- form-group fecha fin evento abierto -->
-          </div><!-- fin roq 2 col 2 -->
-        </div><!-- fin row 2 -->
-
-        <div class="row">
-          <div class="col-6">
-            <div class="form-group">
-                <label for="fechaLimite">Fecha Máxima Confirmación:</label>
+<button id="abierto" type="button" class="btn btn-outline-primary" (click)="openModal(template)">
+    Crear Evento Abierto
+  </button>
+  
+  <ng-template #template>
+  
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Crear Evento Abierto</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  
+    <form autocomplete="nope" (ngSubmit)="onSubmit()" #formulario="ngForm">
+      <div class="modal-body">
+        <div class="container">
+          <div class="row">
+            <!-- inicio row 1 -->
+            <div class="col">
+              <!-- inicio row 1 col 1 -->
+  
+              <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input 
+                type="text" 
+                class="form-control" 
+                id="nombre" 
+                name="nombre" 
+                [(ngModel)]="model.nombre" 
+                required  
+                placeholder="Nombre evento">
+  
+                <!--<div class="alert alert-danger" *ngIf="nombre.touched && !nombre.valid">
+                  Por favor complete el nombre del evento
+                </div>-->
+              </div><!-- form-group nombre evento cerrado -->
+  
+  
+  
+            </div><!-- fin row 1 col 1-->
+  
+            <div class="col">
+  
+              <!-- inicio row 1 col 2 -->
+              <div class="form-group">
+  
+                <label for="locacion">Locación:</label><br>
+                <select ngModel #locacionEventoAbierto="ngModel" required 
+                name="locacionEventoAbierto" [(ngModel)]="laLocacion">
+                  <option value="">Seleccione un valor</option>
+                  <option *ngFor="let l of locaciones" [value]="l.nombre">{{ l.nombre }}</option>
+                </select>
+                <!--<div class="alert alert-danger" *ngIf="locacion.touched && !locacion.valid">
+                  Por favor elija una locacion para el evento
+                </div>-->
+              </div><!-- form-group nombre evento abierto -->
+            </div><!-- fin row 1 col 2-->
+          </div><!-- fin row 1 -->
+  
+          <div class="row">
+            <!-- inicio row 2 -->
+            <div class="col">
+              <!-- inicio row 2 col 1 -->
+              <div class="form-group">
+                <!-- form-group fecha inicio evento abierto -->
+                <label for="fechaInicio">Inicio:</label>
+  
                 <input 
                 required 
-                name="fechaLimite" 
-                [(ngModel)]="model.fechaLimite" 
+                name="fechaInicio" 
+                id="fechaInicio" 
+                [(ngModel)]="model.fechaInicio" 
                 class="form-control" 
                 bsDatepicker 
+                [minDate]="fechaDelDia"
+                [bsConfig]="datePickerConfig"
+                (bsValueChange)="cFechaInicio($event)" 
+                style="width: 117px;">
+  
+                <div class="alert alert-danger" *ngIf="(fechaInicio == null) && (fechaInicio != null)">
+                  Por favor complete la fecha de inicio
+                </div>
+                <div class="alert alert-danger" *ngIf="(fechaLimite != null) && (fechaInicio == null) && (fechaFin != null)">
+                  Por favor complete la fecha de inicio
+                </div>
+  
+                <timepicker 
+                required 
+                name="horaInicio" 
+                [(ngModel)]="model.horaInicio" 
+                [showSpinners]="false"
+                [hourStep]="hstep" 
+                [minuteStep]="mstep" 
+                [showMeridian]="isMeridian" 
+                (ngModelChange)="cHoraInicio($event)">
+                </timepicker>
+  
+              </div><!-- form-group fecha inicio evento abierto -->
+            </div><!-- fin row 2 col 1 -->
+  
+            <div class="col">
+              <!-- inicio row 2 col 2 -->
+              <div class="form-group">
+                <!-- form-group fecha fin evento abierto -->
+                <label for="fechaFin">Fin:</label>
+  
+                <input 
+                required 
+                name="fechaFin" 
+                [(ngModel)]="model.fechaFin" 
+                class="form-control" 
+                bsDatepicker
+                [minDate]="fechaInicio"
                 [bsConfig]="datePickerConfig" 
-                (bsValueChange)="cFechaLimite($event)"
+                (bsValueChange)="cFechaFin($event)"
                 style="width: 117px;" 
                 [isDisabled]="(fechaInicio == null)">
-
-            </div>
-            <!--form group-->
-          </div>
-          <!--col-6-->
-
-          <div class="col-6">
-            <div class="form-group">
-              <label for="precioEntrada">Valor de la entrada:</label>
-              <input 
-              name="precioEntrada" 
-              [(ngModel)]="model.precioEntrada" 
-              required 
-              type="number">
-              <!--<div class="alert alert-danger" *ngIf="precioEntrada.touched && !precioEntrada.valid">
-                Por favor complete el precio de la entrada
-              </div>-->
-            </div>
-            <div class="form-group">
-            <label for="edadMinima">Edad Mínima:</label>
-              <input 
-              name="edadMinima" 
-              [(ngModel)]="model.edadMinima" 
-              required name="edadMinima" 
-              type="number">
-
-              <!--<div class="alert alert-danger" *ngIf="edadMinima.touched && !edadMinima.valid">
-                Por favor complete la edad mínima
-              </div>-->
-              <div class="alert alert-danger" *ngIf="(edadMinima != null) && (edadMinima == null)">
-                Por favor complete la edad mínima
+  
+                <div class="alert alert-danger" *ngIf="(fechaInicio == null) && (fechaFin != null)">
+                  Por favor complete la fecha de inicio
+                </div>
+                <div class="alert alert-danger" *ngIf="(fechaInicio != null) && (fechaFin != null) && (fechaInicio != null) && (fechaFin == null)">
+                  Por favor complete la fecha de inicio
+                </div>
+                <div class="alert alert-danger" *ngIf="fechaInicio > fechaFin">
+                  La fecha de fin debe ser igual o posterior que la fecha de inicio
+                </div>
+  
+                <timepicker 
+                required 
+                name="horaFin" 
+                [(ngModel)]="model.horaFin" 
+                [showSpinners]="false"
+                [hourStep]="hstep" 
+                [minuteStep]="mstep" 
+                [showMeridian]="isMeridian" 
+                (ngModelChange)="cHoraFin($event)">
+                </timepicker>
+  
+                <div class="alert alert-danger" *ngIf="(fechaInicio != null) && (fechaFin != null) && (cFechaInicio_val == cfechafin_val) && (chorainicio_val == chorafin_val)">
+                  Las fechas de inicio y fin pueden coincidir, pero los horarios no
+                  <!--La fecha y hora de fin no pueden coincidir con la fecha y hora de inicio-->
+                </div>
+  
+                <div class="alert alert-danger" *ngIf="(fechaInicio != null) && (fechaFin != null) && (cFechaInicio_val == cfechafin_val) && (chorainicio_val > chorafin_val)">
+                  El horario de fin debe ser posterior al horario de inicio
+                </div>
+  
+              </div><!-- form-group fecha fin evento abierto -->
+            </div><!-- fin roq 2 col 2 -->
+          </div><!-- fin row 2 -->
+  
+          <div class="row">
+            <div class="col-6">
+              <div class="form-group">
+                  <label for="fechaLimite">Fecha Máxima Confirmación:</label>
+                  <input 
+                  required 
+                  name="fechaLimite" 
+                  [(ngModel)]="model.fechaLimite" 
+                  class="form-control" 
+                  bsDatepicker 
+                  [bsConfig]="datePickerConfig" 
+                  (bsValueChange)="cFechaLimite($event)"
+                  style="width: 117px;" 
+                  [isDisabled]="(fechaInicio == null)">
+  
               </div>
+              <!--form group-->
+            </div>
+            <!--col-6-->
+  
+            <div class="col-6">
+              <div class="form-group">
+                <label for="precioEntrada">Valor de la entrada:</label>
+                <input 
+                name="precioEntrada" 
+                [(ngModel)]="model.precioEntrada" 
+                required 
+                type="number">
+                <!--<div class="alert alert-danger" *ngIf="precioEntrada.touched && !precioEntrada.valid">
+                  Por favor complete el precio de la entrada
+                </div>-->
+              </div>
+              <div class="form-group">
+              <label for="edadMinima">Edad Mínima:</label>
+                <input 
+                name="edadMinima" 
+                [(ngModel)]="model.edadMinima" 
+                required name="edadMinima" 
+                type="number">
+  
+                <!--<div class="alert alert-danger" *ngIf="edadMinima.touched && !edadMinima.valid">
+                  Por favor complete la edad mínima
+                </div>-->
+                <div class="alert alert-danger" *ngIf="(edadMinima != null) && (edadMinima == null)">
+                  Por favor complete la edad mínima
+                </div>
+            </div>
           </div>
-        </div>
-        </div>
-        <!--row-->
-        <div class="row">
-          <!-- inicio row 3 -->
-          <div class="col-6"></div>
-          <div class="col-6">
-            <button class="btn btn-danger">Cancelar</button>
-            <button 
-            class="btn btn-primary" 
-            [disabled]="!formulario.valid">Aceptar</button>
           </div>
+          <!--row-->
+          <div class="row">
+            <!-- inicio row 3 -->
+            <div class="col-6"></div>
+            <div class="col-6">
+                <button class="btn btn-danger" (click)="modalRef.hide()">Cancelar</button>
+                <button class="btn btn-primary" [disabled]="!formulario.valid" (click)="getGenerarEvento(); modalRef.hide();">Aceptar</button>
+     
+            </div>
+          </div>
+  
+          <pre class="alert alert-info">
+            <!--info que quiero imprimir-->
+          </pre>
+  
+          <p>{{cHoraInicio_val}}</p>
+  
         </div>
-
-        <pre class="alert alert-info">
-          <!--info que quiero imprimir-->
-        </pre>
-
-        <p>{{cHoraInicio_val}}</p>
-        <p>{{formulario.value | json}}</p>
+        <!--container-->
       </div>
-      <!--container-->
-    </div>
-    <!--modal-body-->
-
-  </form>
-</ng-template>
-
+      <!--modal-body-->
+  
+    </form>
+  </ng-template>

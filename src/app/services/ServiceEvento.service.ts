@@ -46,9 +46,9 @@ export class ServiceEventoService {
     return res.json().map(locacion => Locacion.fromJson(locacion))
   }
 
-  agendaUsuario() {
+ /* agendaUsuario() {
     return (this.http.get(REST_SERVER_URL + "/agendaUsuario/" + this.idUsuario).pipe(map(this.convertToEvento)));
-  }
+  }*/
 
   agendaHoy() {
     return (this.http.get(REST_SERVER_URL + "/agendaHoy/" + this.idUsuario).pipe(map(this.convertToEvento)));

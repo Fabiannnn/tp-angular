@@ -1,4 +1,14 @@
-<div class="container" *ngFor="let p of ngModel">  <div class="row">
+<div *ngIf="eventosAgenda.length>0; then tablaEventos else noHayEventos"> </div>
+
+<ng-template #noHayEventos>
+  <div class="alert alert-danger">
+    No Hay Eventos Agendados 
+    </div>
+</ng-template>
+
+
+<ng-template #tablaEventos>
+<div class="container" *ngFor="let p of eventosAgenda">
  <div class="row">
     <div class="col-sm-3">
       {{p.fechaDeInicio}}
@@ -14,3 +24,5 @@
     </div>
   </div>
 </div>
+</ng-template>
+

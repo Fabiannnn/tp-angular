@@ -1,0 +1,20 @@
+#abierto,
+#cerrado {
+    display: inline-block;
+    vertical-align: top;
+}
+#modal{
+    width: 200px;
+    height: 500px; 
+   background:red;
+
+   }
+   
+   #boxDatepicker{
+    width:100px;
+    height:100px;
+    position:fixed;
+    background:blue; 
+    top:0px;
+   z-index:1080;
+   }

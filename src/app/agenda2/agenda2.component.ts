@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ServiceEventoService } from '../services/ServiceEvento.service';
 import { Evento } from '../angularDomain/Evento';
 import { Router } from '@angular/router';
@@ -17,66 +17,16 @@ export function mostrarError(component, error) {
   styleUrls: ['./agenda2.component.css']
 })
 
-export class Agenda2Component implements OnInit {
+export class Agenda2Component {
   usuarioPerfil: any = {};
   title = 'EVENTOS DE LA FECHA'
   errors = [];
 
-  // EventosAgendaProximos: Array<Evento> = new Array<Evento>();
-  //private serviceUsuario: ServiceUsuarioService,
 
-
-  eventosAgenda: Array<Evento> = new Array<Evento>();
-  eventosHoy: Array<Evento> = new Array<Evento>();
-  eventosSemana: Evento[];
-  eventosProximos: Evento[];
-
-  constructor(private serviceEvento: ServiceEventoService, private router: Router) {
+  constructor(private router: Router) {
   }
 
-  ngOnInit() {
-    this.getEventosAgenda()
-    this.getEventosHoy()
-    this.getEventosSemana()
-    this.getEventosProximos()
-  }
-
-  getEventosAgenda() {
-    this.serviceEvento.agendaUsuario().subscribe(
-      data => { this.eventosAgenda = data },
-      error => {
-        console.log("error", error)
-        this.errors.push(error._body)
-      }
-    )
-
-  }
-  getEventosHoy() {
-    this.serviceEvento.agendaHoy().subscribe(
-      data => { this.eventosHoy = data },
-      error => {
-        console.log("error", error)
-        this.errors.push(error._body)
-      }
-    )
-  }
-  getEventosSemana() {
-    this.serviceEvento.agendaSemana().subscribe(
-      data => { this.eventosSemana = data },
-      error => {
-        console.log("error", error)
-        this.errors.push(error._body)
-      }
-    )
-  }
-  getEventosProximos() {
-    this.serviceEvento.agendaProximos().subscribe(
-      data => { this.eventosProximos = data },
-      error => {
-        console.log("error", error)
-        this.errors.push(error._body)
-      }
-    )
-  }
+  
+ @Input()   eventosAgenda: Array<Evento> = new Array<Evento>();
 
 }

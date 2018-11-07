@@ -1,10 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { ServiceEventoService } from '../services/ServiceEvento.service';
-import { Evento } from '../angularDomain/Evento';
+import { Component,OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { subscribeOn } from 'rxjs/operators';
-import * as moment from 'moment';
-import { map } from 'rxjs/operators';
+import { Evento } from '../angularDomain/Evento';
+import { ServiceEventoService } from '../services/ServiceEvento.service';
 
 
 export function mostrarError(component, error) {
@@ -35,13 +32,13 @@ export class AgendaComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getEventosAgenda()
+    //this.getEventosAgenda()
     this.getEventosHoy()
     this.getEventosSemana()
     this.getEventosProximos()
   }
 
-  getEventosAgenda() {
+ /* getEventosAgenda() {
     this.serviceEvento.agendaUsuario().subscribe(
       data => { this.eventosAgenda = data },
       error => {
@@ -50,7 +47,7 @@ export class AgendaComponent implements OnInit {
       }
     )
 
-  }
+  }*/
   getEventosHoy() {
     this.serviceEvento.agendaHoy().subscribe(
       data => { this.eventosHoy = data },

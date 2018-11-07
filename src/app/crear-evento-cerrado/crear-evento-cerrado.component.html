@@ -1,7 +1,9 @@
-<button type="button" class="btn btn-primary" (click)="openModal(template)">Crear Evento Cerrado</button>
+<button id="cerrado" type="button" class="btn btn-outline-primary"
+ (click)="openModal(template)">
+ Crear Evento Cerrado</button>
 
 <ng-template #template>
-  <div class="modal-header">
+  <div #modal class="modal-header">
     <h4 class="modal-title pull-left">Crear Evento Cerrado</h4>
     <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
       <span aria-hidden="true">&times;</span>
@@ -10,7 +12,7 @@
   <div detect-scroll (onScroll)="handleScroll($event)" class="modal-body">
     <!-- inicio de los contenidos del modal -->
 
-    <form #formulario="ngForm">
+    <form autocomplete="off" #formulario="ngForm">
 
       <div class="container" detect-scroll (onScroll)="handleScroll($event)">
 
@@ -33,7 +35,8 @@
             <!-- inicio row 1 col 2 -->
             <div class="form-group">
               <label for="locacionEventoCerrado">Locación:</label><br>
-              <select ngModel #locacionEventoCerrado="ngModel" required for="locacionEventoCerrado.nombre" name="locacionEventoCerrado" [(ngModel)]="laLocacion">
+              <select ngModel #locacionEventoCerrado="ngModel" required 
+              name="locacionEventoCerrado" [(ngModel)]="laLocacion">
                 <option value="">Seleccione un valor</option>
                 <option *ngFor="let l of locaciones" [value]="l.nombre">{{ l.nombre }}</option>
               </select>
@@ -64,7 +67,7 @@
                 por favor completa la fecha de inicio
               </div>
 
-              <timepicker required name="horaInicioEventoCerrado" [showSpinners]="false" [(ngModel)]="horaInicioEventoCerrado"
+              <timepicker   #boxDatepicker required name="horaInicioEventoCerrado" [showSpinners]="false" [(ngModel)]="horaInicioEventoCerrado"
                 [hourStep]="hstep" [minuteStep]="mstep" [showMeridian]="isMeridian" (ngModelChange)="cHoraInicio($event)">
               </timepicker>
 
@@ -83,7 +86,8 @@
               <div class="alert alert-danger" *ngIf="(fechaInicioEventoCerrado == null) && (fechaFinEventoCerrado != null)">
                 Por favor complete la fecha de inicio
               </div>
-              <div class="alert alert-danger" *ngIf="(fechaInicioEventoCerrado != null) && (fechaFinEventoCerrado != null) && (fechaInicioEventoCerrado != null) && (fechaFinEventoCerrado == null)">
+              <div class="alert alert-danger" *ngIf="(fechaInicioEventoCerrado != null) && 
+              (fechaFinEventoCerrado != null) && (fechaInicioEventoCerrado != null) && (fechaFinEventoCerrado == null)">
                 {{fechaInicioEventoCerrado}}
               </div>
               <div class="alert alert-danger" *ngIf="fechaInicioEventoCerrado > fechaFinEventoCerrado">
@@ -94,11 +98,13 @@
                 [hourStep]="hstep" [minuteStep]="mstep" [showMeridian]="isMeridian" (ngModelChange)="cHoraFin($event)">
               </timepicker>
 
-              <div class="alert alert-danger" *ngIf="(fechaInicioEventoCerrado != null) && (fechaFinEventoCerrado != null) && (cFechaInicio_val == cfechafin_val) && (chorainicio_val == chorafin_val)">
+              <div class="alert alert-danger" *ngIf="(fechaInicioEventoCerrado != null) && (fechaFinEventoCerrado != null) && (cFechaInicio_val == cfechafin_val)
+               && (chorainicio_val == chorafin_val)">
                 fecha y hora estan completas y son iguales
                 <!--La fecha y hora de fin no pueden coincidir con la fecha y hora de inicio-->
               </div>
-              <div class="alert alert-danger" *ngIf="(fechaInicioEventoCerrado != null) && (fechaFinEventoCerrado != null) && (cFechaInicio_val == cfechafin_val) && (chorainicio_val > chorafin_val)">
+              <div class="alert alert-danger" *ngIf="(fechaInicioEventoCerrado != null) && (fechaFinEventoCerrado != null) && (cFechaInicio_val == cfechafin_val)
+               && (chorainicio_val > chorafin_val)">
                 la hora de fin debe ser posterior a la hora de inicio
                 <!--La fecha y hora de fin no pueden coincidir con la fecha y hora de inicio-->
               </div>
