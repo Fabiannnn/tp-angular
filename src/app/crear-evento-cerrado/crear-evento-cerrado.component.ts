@@ -49,7 +49,6 @@ export class CrearEventoCerradoComponent {
   horaInicioEventoCerrado = this.hora;
   horaFinEventoCerrado = this.hora;
 
-
   minDate: Date;
 
   datePickerConfig: Partial<BsDatepickerConfig>

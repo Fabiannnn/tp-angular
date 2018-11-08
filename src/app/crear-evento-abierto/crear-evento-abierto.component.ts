@@ -112,7 +112,7 @@ export class CrearEventoAbiertoComponent {
 
   model = new EventoAbierto(
     this.nombre, 
-    this.locacion, 
+    this.locacion,  
     'el negro de whatsapp', 
     moment(this.cFechaInicio_val).format('DD/MM/YYYY'), 
     moment(this.cHoraInicio_val).format('HH:mm'),
